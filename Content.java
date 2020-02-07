@@ -33,5 +33,4 @@ class Content {
       this.color = c;
     }
   }
-
 }
