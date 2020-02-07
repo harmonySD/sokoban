@@ -1,4 +1,4 @@
-class Content {
+public class Content {
 
   // Class Wall -----------------------------------------------------
   public Wall {
