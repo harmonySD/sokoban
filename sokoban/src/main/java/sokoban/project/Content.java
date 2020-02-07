@@ -1,22 +1,10 @@
 class Content {
 
-  private int texture;
-
-  // ===================== Getter & Setter ========================
-  public int getTexture() { return this.texture ; }
-  public void setTexture(int tmp) { this.texture = tmp ; }
-
-  // ===================== Constructor ========================
-  public Content(int t) {
-    this.texture = t;
-  }
-
   // Class Wall -----------------------------------------------------
   public Wall {
-    // ===================== Constructor ========================
-    public Wall(int t) {
-      super(t);
-    }
+  // ===================== Constructor ========================
+    public Wall(){}
+   
   }
 
   // Class Box ------------------------------------------------------
@@ -28,8 +16,7 @@ class Content {
     public void setColor(string col) { this.color = col ; }
 
     // ===================== Constructor ========================
-    public Box(int t, string c) {
-      super(t);
+    public Box(string c) {
       this.color = c;
     }
   }
@@ -54,15 +41,13 @@ class Content {
 
 
     // ===================== Constructor ========================
-    public Character(int t, int x, int y) {
-      super(t);
+    public Character(int x, int y) {
       this.x = x;
       this.y = y;
       this.bonus = 0;
     }
 
-    public Character(int t, int x, int y, int bonus) {
-      super(t);
+    public Character(int x, int y, int bonus) {
       this.x = x;
       this.y = y;
       this.bonus = bonus;
