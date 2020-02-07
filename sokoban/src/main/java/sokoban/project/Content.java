@@ -1,4 +1,4 @@
-class Content {
+public class Content {
 
   private int texture;
 
