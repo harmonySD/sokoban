@@ -1,4 +1,4 @@
-#import Content ;
+import Content ;
 
 public class Case{
   private String color;
