@@ -1,14 +1,15 @@
 public class Content {
 
+	public Content(){}
+
+  // Class Empty ----------------------------------------------------
+  public class Empty{}
+  
   // Class Wall -----------------------------------------------------
-  public Wall {
-  // ===================== Constructor ========================
-    public Wall(){}
-   
-  }
+  public class Wall {}
 
   // Class Box ------------------------------------------------------
-  public Box {
+  public class Box {
     private string color;
 
     // ===================== Getter & Setter ========================
@@ -22,7 +23,7 @@ public class Content {
   }
 
   // Class Character -----------------------------------------------
-  public Character {
+  public class Character {
     private int x;
     private int y;
     private int bonus;
