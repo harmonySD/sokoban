@@ -3,7 +3,7 @@ public class Player{
 	private int score;
 
 /* constructor*/
-	public Playeur(String n){
+	public Player(String n){
 		nickname=n;
 		score=0;
 
@@ -11,15 +11,15 @@ public class Player{
 
 /*getter for score*/
 	public int getscore(){
-		return score;
+		return this.score;
 	}
 /*getter for nickname*/
 	public String getNickname(){
-		return nickname;
+		return this.nickname;
 	}
 /*setter for score*/
 	public void setScore(int s){
-		score=s;
+		this.score=s;
 	}
 
 
