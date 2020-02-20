@@ -1,4 +1,4 @@
-import Content ;
+
 
 public class Case{
   private String color;
@@ -15,12 +15,12 @@ public class Case{
 
 // ===================== Accesseurs & Mutateurs ========================
 // ------------ Color ------------------------
-  public int getColor() { return this.color; }
+  public String getColor() { return this.color; }
   public void setColor(String  s) { this.color = s; }
 
 // ------------ Bonus ------------
-  public char getBonus(){return this.bonus;}
-  public void setBonus(char bonus){this.bonus = bonus;}
+  public boolean getBonus(){return this.bonus;}
+  public void setBonus(boolean bonus){this.bonus = bonus;}
 
   // ------------ Contenu ----------------
   public Content getContent(){return this.contain;}

@@ -10,14 +10,14 @@ public class Content {
 
   // Class Box ------------------------------------------------------
   public class Box {
-    private string color;
+    private String color;
 
     // ===================== Getter & Setter ========================
-    public string getColor() { return this.color ; }
-    public void setColor(string col) { this.color = col ; }
+    public String getColor() { return this.color ; }
+    public void setColor(String col) { this.color = col ; }
 
     // ===================== Constructor ========================
-    public Box(string c) {
+    public Box(String c) {
       this.color = c;
     }
   }
