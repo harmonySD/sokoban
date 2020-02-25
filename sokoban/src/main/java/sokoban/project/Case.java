@@ -12,6 +12,10 @@ public class Case{
     this.contain = cont;
     this.bonus = b;
   }
+  
+  public Case (Content cont){
+    this("",cont,false);
+  }
 
 // ===================== Accesseurs & Mutateurs ========================
 // ------------ Color ------------------------
