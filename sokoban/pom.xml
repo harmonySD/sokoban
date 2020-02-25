@@ -49,8 +49,15 @@
           <version>2.22.1</version>
         </plugin>
         <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
+        	<artifactId>maven-jar-plugin</artifactId>
+        	<version>3.0.2</version>
+        	<configuration>
+	  		<archive>
+	  		<manifest>
+				<mainClass>sokoban.project.App</mainClass>
+		    </manifest>
+			</archive>
+		</configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
