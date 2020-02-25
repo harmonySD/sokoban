@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="sokoban.project.AppTest" time="0.041" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="sokoban.project.AppTest" time="0.038" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="java.specification.version" value="11"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/home/ymri/.sdkman/candidates/java/11.0.1-open/lib"/>
-    <property name="sun.java.command" value="/home/ymri/Cours/Sokoban/sokoban/sokoban/target/surefire/surefirebooter9902303384763470332.jar /home/ymri/Cours/Sokoban/sokoban/sokoban/target/surefire 2020-02-25T17-35-14_105-jvmRun1 surefire15803874261546982473tmp surefire_016622819784030649946tmp"/>
+    <property name="sun.java.command" value="/home/ymri/Cours/Sokoban/sokoban/sokoban/target/surefire/surefirebooter14823358174942537795.jar /home/ymri/Cours/Sokoban/sokoban/sokoban/target/surefire 2020-02-25T22-57-46_327-jvmRun1 surefire7372315171248789066tmp surefire_0175597859057523924tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/ymri/Cours/Sokoban/sokoban/sokoban/target/test-classes:/home/ymri/Cours/Sokoban/sokoban/sokoban/target/classes:/home/ymri/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/ymri/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/ymri/Cours/Sokoban/sokoban/sokoban/target/surefire/surefirebooter9902303384763470332.jar"/>
+    <property name="surefire.real.class.path" value="/home/ymri/Cours/Sokoban/sokoban/sokoban/target/surefire/surefirebooter14823358174942537795.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.1+13"/>
     <property name="user.name" value="ymri"/>
@@ -57,5 +57,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="sokoban.project.AppTest" time="0.001"/>
+  <testcase name="shouldAnswerWithTrue" classname="sokoban.project.AppTest" time="0.003"/>
 </testsuite>

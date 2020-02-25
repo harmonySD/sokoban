@@ -1,6 +1,6 @@
 package sokoban.project;
 
-  public class Character extends Content {
+  public class Character {
     private int x;
     private int y;
     private int bonus;

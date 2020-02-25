@@ -22,6 +22,6 @@ public class Controleur {
 			}
 		}
 		((JLabel)vue.getBas().getComponents()[0]).setText(modele.getPlayer().getNickname());
-		((JLabel)vue.getBas().getComponents()[0]).setText(Integer.toString(modele.getPlayer().getscore()));
+		((JLabel)vue.getBas().getComponents()[1]).setText("Score : "+Integer.toString(modele.getPlayer().getscore()));
 	}
 }

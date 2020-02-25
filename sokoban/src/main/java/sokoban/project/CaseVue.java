@@ -9,7 +9,6 @@ public class CaseVue extends JPanel {
 	public CaseVue(Case c) {
 		this.c=c;
 		this.setVisible(true);
-		update();
 	}
 	
 	//using colors as placeholders for textures
@@ -24,9 +23,6 @@ public class CaseVue extends JPanel {
 		if(c.getContent() instanceof Box) {
 			this.setBackground(Color.red);
 			//color should change according to the color of the box
-		}
-		if(c.getContent() instanceof Character) {
-			this.setBackground(Color.BLUE);
 		}
 	}
 	

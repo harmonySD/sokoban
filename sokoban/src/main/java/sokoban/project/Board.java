@@ -2,12 +2,12 @@ package sokoban.project;
 
 public class Board {
     private Case[][] tab;
-    private Character character;
+    private Character ch;
 
    //=================Constructeurs =========================
     public Board(int szx,int szy){
 		this.tab=new Case[szx][szy];
-		this.character = null;
+		ch=new Character(0,0);
     }
     public Board() {
     	this(10,10);
@@ -20,31 +20,36 @@ public class Board {
     public int getLength() {
     	return this.tab[0].length;
     }
-	public Character getCharacter(){
-		return this.character;
-	}
-	public void setCharacter(Character character){
-		this.character = character; 
-	}
+	
         
 	public Case getCase(int x, int y){
 		return tab[x][y];
     }
-
-// CE INIT INACHEVE EST POUR TESTER LE TOUT PREMIER PROTOTYPE
-	// Ce init est juste là pour faire des test  
+	
+	public Character getChar() {
+		return this.ch;
+	}
+	
+	
+	
+	// Ce init est là pour faire des test ou bien pour définir une configuration par défaut
 
 	public void init(){
-		/*	
-	for (int i =0;i< tab.len;i++){
-	    tab[i][0].content = new Content.Wall();
-	    tab[i][tab.len-1]  new Content.Wall();
-	    if (i ==0 || i == tab.len-1){
-		for (int j =1;i<tab[i].len;i++)tab[i][j].content = new Content.Wall();
-	    }
-	    tab[7][3].content = Content.Character(7,3);
-	    this.character = (Content.character) tab[7][3].content;
-	    */
+		for (int i =0;i< tab.length;i++){
+			tab[i][0]=new Case(new Wall());
+			tab[i][tab.length-1]=new Case(new Wall());
+			if (i ==0 || i == tab.length-1){
+				for (int j =1;j<tab[i].length-1;j++)tab[i][j]=new Case(new Wall());
+			}
+			else {
+				for (int j =1;j<tab[i].length-1;j++)tab[i][j]=new Case(new Empty());
+			}
+		}
+		ch.setX(7);
+		ch.setY(2);;
+		tab[2][2].setContent(new Box("red"));
+		tab[4][9].setColor("red");
 	}
 }
+
     

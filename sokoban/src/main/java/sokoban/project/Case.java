@@ -1,6 +1,7 @@
 package sokoban.project;
 
 public class Case{
+	private boolean character;
   private String color;
   // le contenu de la case
   private Content contain;
@@ -11,10 +12,14 @@ public class Case{
     this.color = coul;
     this.contain = cont;
     this.bonus = b;
+    character=false;
   }
   
   public Case (Content cont){
     this("",cont,false);
+  }
+  public Case() {
+	  this("",new Content(), false);
   }
 
 // ===================== Accesseurs & Mutateurs ========================
@@ -29,5 +34,12 @@ public class Case{
   // ------------ Contenu ----------------
   public Content getContent(){return this.contain;}
   public void setContent(Content contain ){this.contain = contain;}
+  //-------------Personnage------------------
+  public boolean isChar() {
+	  return character;
+  }
+  public void changeChar(boolean b) {
+	  character=b;
+  }
 
 }
