@@ -1,3 +1,5 @@
+package sokoban.project;
+
 import java.awt.Color;
 
 import javax.swing.JPanel;

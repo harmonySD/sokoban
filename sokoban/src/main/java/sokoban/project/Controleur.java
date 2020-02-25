@@ -1,3 +1,5 @@
+package sokoban.project;
+
 import javax.swing.JLabel;
 
 public class Controleur {

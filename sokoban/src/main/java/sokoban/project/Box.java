@@ -1,3 +1,4 @@
+package sokoban.project;
 
 public class Box extends Content {
 	private String color;

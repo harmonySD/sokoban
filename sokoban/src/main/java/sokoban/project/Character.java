@@ -1,3 +1,5 @@
+package sokoban.project;
+
   public class Character extends Content {
     private int x;
     private int y;

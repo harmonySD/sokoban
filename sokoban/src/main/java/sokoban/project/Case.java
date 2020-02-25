@@ -1,4 +1,4 @@
-
+package sokoban.project;
 
 public class Case{
   private String color;

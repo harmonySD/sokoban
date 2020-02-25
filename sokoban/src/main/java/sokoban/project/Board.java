@@ -1,3 +1,5 @@
+package sokoban.project;
+
 public class Board {
     private Case[][] tab;
     private Character character;

@@ -1,3 +1,5 @@
+package sokoban.project;
+
 public class Player{
 	private String nickname;
 	private int score;

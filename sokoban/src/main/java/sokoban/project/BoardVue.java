@@ -1,3 +1,5 @@
+package sokoban.project;
+
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
