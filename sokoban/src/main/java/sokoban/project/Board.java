@@ -46,9 +46,10 @@ public class Board {
 			}
 		}
 		ch.setX(7);
-		ch.setY(2);;
+		ch.setY(2);
+		tab[2][7].changeChar(true);
 		tab[2][2].setContent(new Box("red"));
-		tab[4][9].setColor("red");
+		tab[4][5].setColor("red");
 	}
 }
 
