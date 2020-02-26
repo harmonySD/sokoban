@@ -1,13 +1,17 @@
+package sokoban.project;
+
 public class Game{
 	private Player player;
 	private Board board;
 	private int score;
 
 	// ===================== Constructor ========================
-	public Game(Player p, Board b, int sc){
+	public Game(Player p, Board b){
 		this.player=p;
 		this.board=b;
-		this.score=sc;
+	}
+	public Game(String n) {
+		this(new Player(n), new Board());
 	}
 
 	// ===================== Getter & Setter ========================
@@ -16,10 +20,6 @@ public class Game{
 
 	public Board getBoard(){ return this.board; }
 	public void setBoard(Board b){ this.board=b; }
-
-	public int getScore(){ return this.score; }
-	public void setScore(int s){ this.score=s; }
-
 
 
 }
