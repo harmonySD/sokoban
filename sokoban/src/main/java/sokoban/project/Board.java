@@ -20,12 +20,9 @@ public class Board {
     public int getLength() {
     	return this.tab[0].length;
     }
-	
-        
 	public Case getCase(int x, int y){
 		return tab[x][y];
     }
-	
 	public Character getChar() {
 		return this.ch;
 	}
@@ -46,6 +43,7 @@ public class Board {
 				break;
 		}
 	}
+	
     // Méthode redéfinie depuis KeyListener
     public void keyPressed(KeyEvent key){
         // touche pressée
@@ -101,6 +99,56 @@ public class Board {
     public void goDown(){
        
     }
+
+    // Function returning boolean depending on if box movement's possible
+	public boolean askMoveBox(int x, int y, char destination) {
+		switch(destination) {
+			// Si les coordonnées de la nouvelle direction sont correctes
+			// Et que la case destination est vide => TRUE
+			// Sinon FALSE
+			case 'r':
+				return (y + 1 < this.getLength() && this.getCase(x, y + 1).getContent() instanceof Empty);
+				break;
+			case 'l':
+				return (y - 1 >= 0 && this.getCase(x, y - 1).getContent() instanceof Empty);
+				break;
+			case 'd':
+				return (x + 1 < this.getHeight() && this.getCase(x + 1, y).getContent() instanceof Empty);
+				break;
+			case 'u':
+				return (x - 1 >= 0 && this.getCase(x - 1, y).getContent() instanceof Empty);
+				break;
+		}
+	}
+
+	// Function moving the box if possible
+	public boolean moveBox(int x, int y, char destination) {
+		Case myBox = this.getCase(x, y);
+		// Si c'est une box et que le mouvement est possible => TRUE Sinon FALSE
+		if(myBox.getContent() instanceof Box && askMoveBox(x, y, destination)) {
+			Empty vide = new Empty();
+			// Effectuer le mouvement en mettant une box dans la case destination
+			// Et en vidant la case de la box de départ
+			switch(destination) {
+				case 'r':
+					this.getCase(x, y + 1).setContent(myBox.getContent());
+					myBox.setContent(vide);
+					break;
+				case 'l':
+					this.getCase(x, y - 1).setContent(myBox.getContent());
+					myBox.setContent(vide);
+					break;
+				case 'd':
+					this.getCase(x + 1, y).setContent(myBox.getContent());
+					myBox.setContent(vide);
+					break;
+				case 'u':
+					this.getCase(x - 1, y).setContent(myBox.getContent());
+					myBox.setContent(vide);
+					break;
+			}
+		}
+	}
 	
 	
 	
