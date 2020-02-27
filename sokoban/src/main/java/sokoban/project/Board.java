@@ -108,21 +108,18 @@ public class Board {
 			// Sinon FALSE
 			case 'r':
 				return (y + 1 < this.getLength() && this.getCase(x, y + 1).getContent() instanceof Empty);
-				break;
 			case 'l':
 				return (y - 1 >= 0 && this.getCase(x, y - 1).getContent() instanceof Empty);
-				break;
 			case 'd':
 				return (x + 1 < this.getHeight() && this.getCase(x + 1, y).getContent() instanceof Empty);
-				break;
 			case 'u':
 				return (x - 1 >= 0 && this.getCase(x - 1, y).getContent() instanceof Empty);
-				break;
 		}
+		return false;
 	}
 
 	// Function moving the box if possible
-	public boolean moveBox(int x, int y, char destination) {
+	public void moveBox(int x, int y, char destination) {
 		Case myBox = this.getCase(x, y);
 		// Si c'est une box et que le mouvement est possible => TRUE Sinon FALSE
 		if(myBox.getContent() instanceof Box && askMoveBox(x, y, destination)) {
