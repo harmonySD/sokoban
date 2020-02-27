@@ -1,5 +1,5 @@
 package sokoban.project;
-
+import java.awt.event.KeyEvent;
 public class Board {
     private Case[][] tab;
     private Character ch;
@@ -29,6 +29,78 @@ public class Board {
 	public Character getChar() {
 		return this.ch;
 	}
+
+	public void movePlayer(int direction){
+		switch(direction){
+			case KeyEvent.VK_UP :
+				goUP();
+				break;
+			case KeyEvent.VK_DOWN :
+				goDown();
+				break;
+			case KeyEvent.VK_RIGHT :
+			 	goRight();
+			 	break;
+			case KeyEvent.VK_LEFT :
+				goLeft();
+				break;
+		}
+	}
+    // Méthode redéfinie depuis KeyListener
+    public void keyPressed(KeyEvent key){
+        // touche pressée
+         
+        // Je test les valeurs de ma touche
+         
+        int codeDeLaTouche = key.getKeyCode();
+         
+        switch (codeDeLaTouche) // Les valeurs sont contenue dans KeyEvent. Elles commencent par VK_ et finissent par le nom de la touche
+        {
+            case KeyEvent.VK_UP: // si la touche enfoncée est celle du haut
+                goUP();
+                break;
+            case KeyEvent.VK_LEFT: // si la touche enfoncée est celle de gauche
+                goLeft();
+                break;
+            case KeyEvent.VK_RIGHT: // si la touche enfoncée est celle de droite
+                goRight();
+                break;
+            case KeyEvent.VK_DOWN: // si la touche enfoncée est celle du bas
+                goDown();
+                break;
+        }
+    }
+ 
+    // Méthode redéfinie depuis KeyListener
+    public void keyReleased(KeyEvent key){
+        // touche relachée
+    }
+ 
+    // Méthode redéfinie depuis KeyListener
+    public void keyTyped(KeyEvent key){
+        // touche appuyée
+    }
+ 
+    public void goUP(){
+  		if (tab[char.getX()][char.getY()].getContent() instanceof Empty) {
+  			char.setX()=-1;
+  		}
+  		if (tab[char.getX()][char.getY()].getContent() instanceof Box) {
+  			
+  		}
+    }
+ 
+    public void goRight(){
+        
+    }
+ 
+    public void goLeft(){
+       
+    }
+ 
+    public void goDown(){
+       
+    }
 	
 	
 	
