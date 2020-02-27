@@ -100,6 +100,42 @@ public class Board {
        
     }*/
 
+    //Function returning boolean depending on if character movement's possible
+    public boolean askMoveCharacter(int x, int y, destination){
+    	switch(destination){
+    		// Si les coordonnées de la nouvelle direction sont correctes
+			// Et que la case destination est vide => TRUE
+    		//Sinon si les coordonnées de la nouvelle direction sont correctes
+    		//Et que la case destination contient une boite-> si askMoveBox vrai => TRUE (FALSE sinon)
+			// Sinon FALSE
+    		case'r':
+    			if (y+1 < this.getLength() && this.getCase(x, y+1).getContent() instanceof Empty) {returntrue;}
+    			else if(y+1 < this.getLength() && this.getCase(x, y+1).getContent() instanceof Box){
+    				if(askMoveBox) {return true;}
+    				else {return false;}
+    			}
+    		case'l':
+    			if (y-1 < this.getLength() && this.getCase(x, y-1).getContent() instanceof Empty) {returntrue;}
+    			else if(y-1 < this.getLength() && this.getCase(x, y-1).getContent() instanceof Box){
+    				if(askMoveBox) {return true;}
+    				else {return false;}
+    			}
+    		case'd':
+    			if (x+1 < this.getLength() && this.getCase(x+1, y).getContent() instanceof Empty) {returntrue;}
+    			else if(x+1 < this.getLength() && this.getCase(x+1, y).getContent() instanceof Box){
+    				if(askMoveBox) {return true;}
+    				else {return false;}
+    			}
+    		case'u':
+    			if (x-1 < this.getLength() && this.getCase(x-1, y).getContent() instanceof Empty) {returntrue;}
+    			else if(x-1 < this.getLength() && this.getCase(x-1, y).getContent() instanceof Box){
+    				if(askMoveBox) {return true;}
+    				else {return false;}
+    			}
+    	}
+    	return false;
+    }
+
     // Function returning boolean depending on if box movement's possible
 	public boolean askMoveBox(int x, int y, char destination) {
 		switch(destination) {
