@@ -60,7 +60,7 @@ public class CaseVue extends JPanel {
 			}
 			catch (IOException e) { System.out.println("Fichier Introuvable");}
 		}
-		if(c.isChar()) {
+		if(c.getChar()) {
 			try {fg=ImageIO.read(new File(path+"Character.bmp"));}
 			catch (IOException e) { System.out.println("Fichier Introuvable");}
 		}

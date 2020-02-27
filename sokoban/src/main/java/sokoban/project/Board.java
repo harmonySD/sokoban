@@ -106,34 +106,78 @@ public class Board {
     		// Si les coordonnées de la nouvelle direction sont correctes
 			// Et que la case destination est vide => TRUE
     		//Sinon si les coordonnées de la nouvelle direction sont correctes
-    		//Et que la case destination contient une boite-> si askMoveBox vrai => TRUE (FALSE sinon)
+    		//Et que la case destination contient une boite-> si askMoveBox vrai => TRUE et on appel moveBox (FALSE sinon)
 			// Sinon FALSE
     		case'r':
     			if (y+1 < this.getLength() && this.getCase(x, y+1).getContent() instanceof Empty) {return true;}
     			else if(y+1 < this.getLength() && this.getCase(x, y+1).getContent() instanceof Box){
-    				if(askMoveBox(x,y,destination)) {return true;}
+    				if(askMoveBox(x,y,destination)) {
+    					moveBox(x,y,destination);
+    					return true;
+    				}
     				else {return false;}
     			}
     		case'l':
     			if (y-1 < this.getLength() && this.getCase(x, y-1).getContent() instanceof Empty) {return true;}
     			else if(y-1 < this.getLength() && this.getCase(x, y-1).getContent() instanceof Box){
-    				if(askMoveBox(x,y,destination)) {return true;}
+    				if(askMoveBox(x,y,destination)) {
+    					moveBox(x,y,destination);
+    					return true;
+    				}
     				else {return false;}
     			}
     		case'd':
     			if (x+1 < this.getLength() && this.getCase(x+1, y).getContent() instanceof Empty) {return true;}
     			else if(x+1 < this.getLength() && this.getCase(x+1, y).getContent() instanceof Box){
-    				if(askMoveBox(x,y,destination)) {return true;}
+    				if(askMoveBox(x,y,destination)) {
+    					moveBox(x,y,destination);
+    					return true;
+    				}
     				else {return false;}
     			}
     		case'u':
     			if (x-1 < this.getLength() && this.getCase(x-1, y).getContent() instanceof Empty) {return true;}
     			else if(x-1 < this.getLength() && this.getCase(x-1, y).getContent() instanceof Box){
-    				if(askMoveBox(x,y,destination)) {return true;}
+    				if(askMoveBox(x,y,destination)) {
+    					moveBox(x,y,destination);
+    					return true;
+    				}
     				else {return false;}
     			}
     	}
     	return false;
+    }
+
+    //Function moving the character if it's possible
+    public void moveCharacter(int x, int y, char destination){
+    	Case myCharacter=this.getCase(x,y);
+    	//
+    	if (myCharacter.getChar()==true && askMoveCharacter(x,y, destination)) {
+			//Effectuer le mouvement en mettant une box dans la case destination 
+			//Et en vidant la case depart du character
+			switch(destination){
+				case'r':
+					this.getCase(x, y+1).setChar(true);
+					ch.setY(y+1);
+					this.getCase(x, y).setChar(false);
+					break;
+				case'l':
+					this.getCase(x, y-1).setChar(true);
+					ch.setY(y-1);
+					this.getCase(x, y).setChar(false);
+					break;
+				case'd':
+					this.getCase(x+1,y).setChar(true);
+					ch.setX(x+1);
+					this.getCase(x,y).setChar(false);
+					break;
+				case'u': 
+					this.getCase(x-1,y).setChar(true);
+					ch.setX(x-1);
+					this.getCase(x,y).setChar(false);
+					break;
+			}
+    	}
     }
 
     // Function returning boolean depending on if box movement's possible
@@ -200,7 +244,7 @@ public class Board {
 		}
 		ch.setX(7);
 		ch.setY(2);
-		tab[2][7].changeChar(true);
+		tab[2][7].setChar(true);
 		tab[2][2].setContent(new Box("red"));
 		tab[4][5].setColor("red");
 	}
