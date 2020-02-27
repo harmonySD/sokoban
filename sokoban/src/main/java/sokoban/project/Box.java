@@ -9,7 +9,7 @@ public class Box extends Content {
     public String getColor() { return this.color ; }
     public void setColor(String col) { this.color = col ; }
 
-    public int 
+    
 
     // ===================== Constructor ========================
     public Box(String c) {

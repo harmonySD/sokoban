@@ -26,7 +26,7 @@ public class Board {
 	public Character getChar() {
 		return this.ch;
 	}
-
+/*
 	public void movePlayer(int direction){
 		switch(direction){
 			case KeyEvent.VK_UP :
@@ -69,7 +69,7 @@ public class Board {
         }
     }
  
-    // Méthode redéfinie depuis KeyListener
+   // Méthode redéfinie depuis KeyListener
     public void keyReleased(KeyEvent key){
         // touche relachée
     }
@@ -98,7 +98,7 @@ public class Board {
  
     public void goDown(){
        
-    }
+    }*/
 
     // Function returning boolean depending on if box movement's possible
 	public boolean askMoveBox(int x, int y, char destination) {
