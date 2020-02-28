@@ -15,6 +15,7 @@ public class App
 	String nom=sc.next();
 	EventQueue.invokeLater( () -> {
 		new GameVue(nom);
+
 	});
     }
 }

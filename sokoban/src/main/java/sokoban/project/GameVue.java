@@ -8,8 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
+import java.awt.*;
+import java.awt.event.*;
 
 public class GameVue extends JFrame implements KeyListener{
 	public Controleur ctrl;
@@ -32,6 +32,7 @@ public class GameVue extends JFrame implements KeyListener{
 		this.add(bas,c);
 		this.setVisible(true);
 		this.setSize(1000,1000);
+		KeyListener listener = new KeyListener();
 		ctrl.update();
 		
 	}
@@ -44,6 +45,7 @@ public class GameVue extends JFrame implements KeyListener{
 
 
 	public void move(int direction){
+		System.out.println("coucou0");
 		switch(direction){
 			case KeyEvent.VK_UP :
 				goUP();
@@ -62,9 +64,8 @@ public class GameVue extends JFrame implements KeyListener{
 	// Méthode redéfinie depuis KeyListener
     public void keyPressed(KeyEvent key){
         // touche pressée
-         
         // Je test les valeurs de ma touche
-         
+        System.out.println("coucou");
         int codeDeLaTouche = key.getKeyCode();
          
         switch (codeDeLaTouche) // Les valeurs sont contenue dans KeyEvent. Elles commencent par VK_ et finissent par le nom de la touche
@@ -99,15 +100,15 @@ public class GameVue extends JFrame implements KeyListener{
     }
  
     public void goRight(){
-        moveCharacter('r');
+        ctrl.getModele().getBoard().moveCharacter('r');
     }
  
     public void goLeft(){
-       moveCharacter('l');
+       ctrl.getModele().getBoard().moveCharacter('l');
     }
  
     public void goDown(){
-       moveCharacter('d');
+       ctrl.getModele().getBoard().moveCharacter('d');
     }
 
 	
