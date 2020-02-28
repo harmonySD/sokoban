@@ -8,7 +8,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class GameVue extends JFrame {
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+
+public class GameVue extends JFrame implements KeyListener{
 	public Controleur ctrl;
 	public GameVue(String nom) {
 		ctrl=new Controleur(this, nom);
@@ -38,5 +41,75 @@ public class GameVue extends JFrame {
 	public BoardVue getBoard() {
 		return (BoardVue)this.getContentPane().getComponents()[0];
 	}
+
+
+	public void move(int direction){
+		switch(direction){
+			case KeyEvent.VK_UP :
+				goUP();
+				break;
+			case KeyEvent.VK_DOWN :
+				goDown();
+				break;
+			case KeyEvent.VK_RIGHT :
+			 	goRight();
+			 	break;
+			case KeyEvent.VK_LEFT :
+				goLeft();
+				break;
+		}
+	}
+	// Méthode redéfinie depuis KeyListener
+    public void keyPressed(KeyEvent key){
+        // touche pressée
+         
+        // Je test les valeurs de ma touche
+         
+        int codeDeLaTouche = key.getKeyCode();
+         
+        switch (codeDeLaTouche) // Les valeurs sont contenue dans KeyEvent. Elles commencent par VK_ et finissent par le nom de la touche
+        {
+            case KeyEvent.VK_UP: // si la touche enfoncée est celle du haut
+                goUP();
+                break;
+            case KeyEvent.VK_LEFT: // si la touche enfoncée est celle de gauche
+                goLeft();
+                break;
+            case KeyEvent.VK_RIGHT: // si la touche enfoncée est celle de droite
+                goRight();
+                break;
+            case KeyEvent.VK_DOWN: // si la touche enfoncée est celle du bas
+                goDown();
+                break;
+        }
+    }
+ 
+   	// Méthode redéfinie depuis KeyListener
+    public void keyReleased(KeyEvent key){
+        // touche relachée
+    }
+ 
+    // Méthode redéfinie depuis KeyListener
+    public void keyTyped(KeyEvent key){
+        // touche appuyée
+    }
+ 
+    public void goUP(){
+    	ctrl.getModele().getBoard().moveCharacter('u');
+    }
+ 
+    public void goRight(){
+        moveCharacter('r');
+    }
+ 
+    public void goLeft(){
+       moveCharacter('l');
+    }
+ 
+    public void goDown(){
+       moveCharacter('d');
+    }
+
+	
 	
 }

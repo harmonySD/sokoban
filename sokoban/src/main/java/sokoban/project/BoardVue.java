@@ -4,7 +4,9 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-public class BoardVue extends JPanel {
+
+
+public class BoardVue extends JPanel{
 	int len;
 	public BoardVue(Board b) {
 		len=b.getLength();
@@ -19,6 +21,5 @@ public class BoardVue extends JPanel {
 		
 		return (CaseVue)((JPanel)this.getComponents()[i*len+j]);
 	}
-	
 	
 }

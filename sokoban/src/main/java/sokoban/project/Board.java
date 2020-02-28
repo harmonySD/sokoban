@@ -1,5 +1,4 @@
 package sokoban.project;
-import java.awt.event.KeyEvent;
 public class Board {
     private Case[][] tab;
     private Character ch;
@@ -149,7 +148,9 @@ public class Board {
     }
 
     //Function moving the character if it's possible
-    public void moveCharacter(int x, int y, char destination){
+    public void moveCharacter(char destination){
+    	int x= this.ch.getX();
+    	int y= this.ch.getY();
     	Case myCharacter=this.getCase(x,y);
     	//
     	if (myCharacter.getChar()==true && askMoveCharacter(x,y, destination)) {
