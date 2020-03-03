@@ -32,16 +32,25 @@ public class CaseVue extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(bg, 0, 0,this.getWidth(), this.getHeight(), null);
-		g.drawImage(fg,0,0,this.getWidth(), this.getHeight(), null);
+		if(fg!=null) g.drawImage(fg,0,0,this.getWidth(), this.getHeight(), null);
 	}
 	//using colors as placeholders for textures
 	public void update() {
 		if(c.getContent() instanceof Empty) {
 			try {
 				switch(c.getColor()) {
-				case("red") : fg=ImageIO.read(new File(path+"Objective_R.bmp"));
-				case("green") : fg=ImageIO.read(new File(path+"Objective_G.bmp"));
-				case("blue") : fg=ImageIO.read(new File(path+"Objective_B.bmp"));
+					case("red") : 
+						fg=ImageIO.read(new File(path+"Objective_R.bmp"));
+						break;
+					case("green") : 
+						fg=ImageIO.read(new File(path+"Objective_G.bmp"));
+						break;
+					case("blue") : 
+						fg=ImageIO.read(new File(path+"Objective_B.bmp"));
+						break;
+						default:
+							fg=null;
+							break;
 				}
 			}
 			catch (IOException e) { System.out.println("Fichier Introuvable");}
@@ -53,14 +62,20 @@ public class CaseVue extends JPanel {
 		if(c.getContent() instanceof Box) {
 			try {
 				switch(((Box)c.getContent()).getColor()) {
-				case("red") : fg=ImageIO.read(new File(path+"Box_R.bmp"));
-				case("green") : fg=ImageIO.read(new File(path+"Box_G.bmp"));
-				case("blue") : fg=ImageIO.read(new File(path+"Box_B.bmp"));
+					case("red") : 
+						fg=ImageIO.read(new File(path+"Box_R.bmp"));
+						break;
+					case("green") : 
+						fg=ImageIO.read(new File(path+"Box_G.bmp"));
+						break;
+					case("blue") :
+						fg=ImageIO.read(new File(path+"Box_B.bmp"));
+						break;
 				}
 			}
 			catch (IOException e) { System.out.println("Fichier Introuvable");}
 		}
-		if(c.isChar()) {
+		if(c.getChar()) {
 			try {fg=ImageIO.read(new File(path+"Character.bmp"));}
 			catch (IOException e) { System.out.println("Fichier Introuvable");}
 		}

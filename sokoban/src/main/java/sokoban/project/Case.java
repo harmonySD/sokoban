@@ -35,10 +35,10 @@ public class Case{
   public Content getContent(){return this.contain;}
   public void setContent(Content contain ){this.contain = contain;}
   //-------------Personnage------------------
-  public boolean isChar() {
+  public boolean getChar() {
 	  return character;
   }
-  public void changeChar(boolean b) {
+  public void setChar(boolean b) {
 	  character=b;
   }
 
