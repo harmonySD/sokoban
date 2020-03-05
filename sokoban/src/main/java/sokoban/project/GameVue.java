@@ -47,16 +47,16 @@ public class GameVue extends JFrame implements KeyListener {
 		Board board=ctrl.getModele().getBoard();
 		switch(keyCode) {
 		case KeyEvent.VK_UP: 
-			board.moveCharacter(board.getChar().getX(), board.getChar().getX(), 'u');
+			board.moveCharacter('u');
 			break;
 		case KeyEvent.VK_DOWN: 
-			board.moveCharacter(board.getChar().getX(), board.getChar().getX(), 'd');
+			board.moveCharacter( 'd');
 			break;
 		case KeyEvent.VK_LEFT: 
-			board.moveCharacter(board.getChar().getX(), board.getChar().getX(), 'l');
+			board.moveCharacter('l');
 			break;
 		case KeyEvent.VK_RIGHT: 
-			board.moveCharacter(board.getChar().getX(), board.getChar().getX(), 'r');
+			board.moveCharacter('r');
 			System.out.println("zzzzzzz");
 			break;
 		}

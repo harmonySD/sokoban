@@ -122,13 +122,12 @@ public class Board {
     	return false;
     }
 
-
-
-    //Function moving the character if it's possible
-    public void moveCharacter(int x, int y, char destination){
+	public void moveCharacter(char destination){
+    	int x= this.ch.getX();
+    	int y= this.ch.getY();
     	Case myCharacter=this.getCase(x,y);
     	//
-    	if (myCharacter.getChar()==true && askMoveCharacter(x,y, destination)) {
+    	if (askMoveCharacter(x,y, destination)) {
 			//Effectuer le mouvement en mettant une box dans la case destination 
 			//Et en vidant la case depart du character
 			switch(destination){
@@ -156,7 +155,6 @@ public class Board {
     	}
     }
 
-	
 	
 	
 	// Ce init est là pour faire des test ou bien pour définir une configuration par défaut
