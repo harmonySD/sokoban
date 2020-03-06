@@ -25,7 +25,7 @@ public class Case{
 // ===================== Accesseurs & Mutateurs ========================
 // ------------ Color ------------------------
   public String getColor() { return this.pointColor; }
-  public void setColor(String  s) { this.poinCcolor = s; }
+  public void setColor(String  s) { this.pointCcolor = s; }
 
 // ------------ Bonus ------------
   public boolean getBonus(){return this.bonus;}
