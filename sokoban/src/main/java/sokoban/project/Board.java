@@ -23,7 +23,7 @@ public class Board {
 	
     
 	public Case getCase(int x, int y){
-		return tab[x][y];
+		return tab[y][x];
     }
 	
 	public Character getChar() {
@@ -63,7 +63,7 @@ public class Board {
 					this.getCase(x, y - 1).setContent(myBox.getContent());
 					myBox.setContent(vide);
 					break;
-				case 'd':
+				case 'd': 
 					this.getCase(x + 1, y).setContent(myBox.getContent());
 					myBox.setContent(vide);
 					break;
@@ -85,35 +85,35 @@ public class Board {
     		case'r':
     			if (y+1 < this.getLength() && this.getCase(x, y+1).getContent() instanceof Empty) {return true;}
     			else if(y+1 < this.getLength() && this.getCase(x, y+1).getContent() instanceof Box){
-    				if(askMoveBox(x,y,destination)) {
-    					moveBox(x,y,destination);
+    				if(askMoveBox(x,y+1,destination)) {
+    					moveBox(x,y+1,destination);
     					return true;
     				}
     				else {return false;}
     			}
     		case'l':
-    			if (y-1 < this.getLength() && this.getCase(x, y-1).getContent() instanceof Empty) {return true;}
+    			if (y-1 >=0 && this.getCase(x, y-1).getContent() instanceof Empty) {return true;}
     			else if(y-1 < this.getLength() && this.getCase(x, y-1).getContent() instanceof Box){
-    				if(askMoveBox(x,y,destination)) {
-    					moveBox(x,y,destination);
+    				if(askMoveBox(x,y-1,destination)) {
+    					moveBox(x,y-1,destination);
     					return true;
     				}
     				else {return false;}
     			}
     		case'd':
-    			if (x+1 < this.getLength() && this.getCase(x+1, y).getContent() instanceof Empty) {return true;}
+    			if (x+1 < this.getHeight() && this.getCase(x+1, y).getContent() instanceof Empty) {return true;}
     			else if(x+1 < this.getLength() && this.getCase(x+1, y).getContent() instanceof Box){
-    				if(askMoveBox(x,y,destination)) {
-    					moveBox(x,y,destination);
+    				if(askMoveBox(x+1,y,destination)) {
+    					moveBox(x+1,y,destination);
     					return true;
     				}
     				else {return false;}
     			}
     		case'u':
-    			if (x-1 < this.getLength() && this.getCase(x-1, y).getContent() instanceof Empty) {return true;}
+    			if (x-1 >=0 && this.getCase(x-1, y).getContent() instanceof Empty) {return true;}
     			else if(x-1 < this.getLength() && this.getCase(x-1, y).getContent() instanceof Box){
-    				if(askMoveBox(x,y,destination)) {
-    					moveBox(x,y,destination);
+    				if(askMoveBox(x-1,y,destination)) {
+    					moveBox(x-1,y,destination);
     					return true;
     				}
     				else {return false;}
@@ -152,7 +152,7 @@ public class Board {
 					this.getCase(x,y).setChar(false);
 					break;
 			}
-    	}
+    	} 
     }
 
 	

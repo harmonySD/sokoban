@@ -1,66 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="sokoban.project.AppTest" time="0.067" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="sokoban.project.AppTest" time="0.035" tests="1" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="gopherProxySet" value="false"/>
-    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
-    <property name="java.specification.version" value="10"/>
-    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.specification.version" value="11"/>
     <property name="sun.cpu.isalist" value=""/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.class.path" value="/Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/target/test-classes:/Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/target/classes:/Users/harmonysimon-duchatel/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/harmonysimon-duchatel/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
-    <property name="java.vm.vendor" value="&quot;Oracle Corporation&quot;"/>
+    <property name="java.class.path" value="/home/ymri/Cours/Sokoban/sokoban/sokoban/target/test-classes:/home/ymri/Cours/Sokoban/sokoban/sokoban/target/classes:/home/ymri/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/ymri/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="user.timezone" value=""/>
-    <property name="java.vm.specification.version" value="10"/>
-    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Linux"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="user.country" value="FR"/>
-    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/target/surefire/surefirebooter12777456473737886970.jar /Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/target/surefire 2020-03-05T13-57-46_045-jvmRun1 surefire15262540261248451713tmp surefire_013415675083648758511tmp"/>
-    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/home/ymri/.sdkman/candidates/java/11.0.1-open/lib"/>
+    <property name="sun.java.command" value="/home/ymri/Cours/Sokoban/sokoban/sokoban/target/surefire/surefirebooter11691116136070187385.jar /home/ymri/Cours/Sokoban/sokoban/sokoban/target/surefire 2020-03-06T11-56-43_747-jvmRun1 surefire1199642120949538849tmp surefire_03269247981750959841tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="/Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/target/test-classes:/Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/target/classes:/Users/harmonysimon-duchatel/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/harmonysimon-duchatel/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
+    <property name="surefire.test.class.path" value="/home/ymri/Cours/Sokoban/sokoban/sokoban/target/test-classes:/home/ymri/Cours/Sokoban/sokoban/sokoban/target/classes:/home/ymri/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/ymri/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="/Users/harmonysimon-duchatel"/>
-    <property name="user.language" value="fr"/>
+    <property name="user.home" value="/home/ymri"/>
+    <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.version.date" value="2018-07-17"/>
-    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home"/>
+    <property name="java.version.date" value="2018-10-16"/>
+    <property name="java.home" value="/home/ymri/.sdkman/candidates/java/11.0.1-open"/>
     <property name="file.separator" value="/"/>
-    <property name="basedir" value="/Users/harmonysimon-duchatel/sokoban/sokoban/sokoban"/>
-    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="basedir" value="/home/ymri/Cours/Sokoban/sokoban/sokoban"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/target/surefire/surefirebooter12777456473737886970.jar"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/home/ymri/Cours/Sokoban/sokoban/sokoban/target/surefire/surefirebooter11691116136070187385.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
-    <property name="java.runtime.version" value="10.0.2+13"/>
-    <property name="user.name" value="harmonysimon-duchatel"/>
+    <property name="java.runtime.version" value="11.0.1+13"/>
+    <property name="user.name" value="ymri"/>
     <property name="path.separator" value=":"/>
-    <property name="os.version" value="10.15.3"/>
-    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="os.version" value="4.15.0-88-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="java.vendor.version" value="18.3"/>
-    <property name="localRepository" value="/Users/harmonysimon-duchatel/.m2/repository"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="18.9"/>
+    <property name="localRepository" value="/home/ymri/.m2/repository"/>
     <property name="java.vendor.url.bug" value="http://bugreport.java.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="/var/folders/ch/82w1xytd4nb3hc_3smg_q4hw0000gn/T/"/>
-    <property name="java.version" value="10.0.2"/>
-    <property name="user.dir" value="/Users/harmonysimon-duchatel/sokoban/sokoban/sokoban"/>
-    <property name="os.arch" value="x86_64"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="11.0.1"/>
+    <property name="user.dir" value="/home/ymri/Cours/Sokoban/sokoban/sokoban"/>
+    <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
     <property name="sun.os.patch.level" value="unknown"/>
-    <property name="java.library.path" value="/Users/harmonysimon-duchatel/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.vm.version" value="10.0.2+13"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
-    <property name="java.class.version" value="54.0"/>
-    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.vm.version" value="11.0.1+13"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="sokoban.project.AppTest" time="0.006"/>
+  <testcase name="shouldAnswerWithTrue" classname="sokoban.project.AppTest" time="0.002"/>
 </testsuite>

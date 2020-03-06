@@ -71,6 +71,9 @@ public class CaseVue extends JPanel {
 					case("blue") :
 						fg=ImageIO.read(new File(path+"Box_B.bmp"));
 						break;
+					default:
+						fg=ImageIO.read(new File(path+"Box_R.bmp"));
+						break;
 				}
 			}
 			catch (IOException e) { System.out.println("Fichier Introuvable");}
