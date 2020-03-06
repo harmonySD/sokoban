@@ -1,12 +1,12 @@
 sokoban/project/App.class
-sokoban/project/Game.class
 sokoban/project/Case.class
+sokoban/project/Game.class
 sokoban/project/GameVue.class
 sokoban/project/Character.class
 sokoban/project/Player.class
 sokoban/project/Board.class
-sokoban/project/Content.class
 sokoban/project/BoardVue.class
+sokoban/project/Content.class
 sokoban/project/Controleur.class
 sokoban/project/Box.class
 sokoban/project/Empty.class
