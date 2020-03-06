@@ -2,14 +2,14 @@ package sokoban.project;
 
 public class Case{
 	private boolean character;
-  private String color;
+  private String pointColor;
   // le contenu de la case
   private Content contain;
   private boolean bonus;
   
   // ============ Constructor ===========
   public Case(String coul, Content cont, boolean b){
-    this.color = coul;
+    this.pointColor = coul;
     this.contain = cont;
     this.bonus = b;
     character=false;
@@ -24,8 +24,8 @@ public class Case{
 
 // ===================== Accesseurs & Mutateurs ========================
 // ------------ Color ------------------------
-  public String getColor() { return this.color; }
-  public void setColor(String  s) { this.color = s; }
+  public String getColor() { return this.pointColor; }
+  public void setColor(String  s) { this.pointColor = s; }
 
 // ------------ Bonus ------------
   public boolean getBonus(){return this.bonus;}
