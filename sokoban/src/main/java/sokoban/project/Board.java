@@ -91,6 +91,7 @@ public class Board {
     				}
     				else {return false;}
     			}
+    			else return false;
     		case'l':
     			if (y-1 >=0 && this.getCase(x, y-1).getContent() instanceof Empty) {return true;}
     			else if(y-1 < this.getLength() && this.getCase(x, y-1).getContent() instanceof Box){
@@ -100,6 +101,7 @@ public class Board {
     				}
     				else {return false;}
     			}
+    			else return false;
     		case'd':
     			if (x+1 < this.getHeight() && this.getCase(x+1, y).getContent() instanceof Empty) {return true;}
     			else if(x+1 < this.getLength() && this.getCase(x+1, y).getContent() instanceof Box){
@@ -109,6 +111,7 @@ public class Board {
     				}
     				else {return false;}
     			}
+    			else return false;
     		case'u':
     			if (x-1 >=0 && this.getCase(x-1, y).getContent() instanceof Empty) {return true;}
     			else if(x-1 < this.getLength() && this.getCase(x-1, y).getContent() instanceof Box){
