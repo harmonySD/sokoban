@@ -3,12 +3,14 @@ package sokoban.project;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class GameVue extends JFrame {
+public class GameVue extends JFrame implements KeyListener {
 	public Controleur ctrl;
 	public GameVue(String nom) {
 		ctrl=new Controleur(this, nom);
@@ -30,6 +32,7 @@ public class GameVue extends JFrame {
 		this.setVisible(true);
 		this.setSize(1000,1000);
 		ctrl.update();
+		this.addKeyListener(this);
 		
 	}
 	public JPanel getBas() {
@@ -38,5 +41,27 @@ public class GameVue extends JFrame {
 	public BoardVue getBoard() {
 		return (BoardVue)this.getContentPane().getComponents()[0];
 	}
+	
+	public void keyReleased(KeyEvent e) {
+		int keyCode = e.getKeyCode();
+		Board board=ctrl.getModele().getBoard();
+		switch(keyCode) {
+		case KeyEvent.VK_UP: 
+			board.moveCharacter('u');
+			break;
+		case KeyEvent.VK_DOWN: 
+			board.moveCharacter('d');
+			break;
+		case KeyEvent.VK_LEFT: 
+			board.moveCharacter('l');
+			break;
+		case KeyEvent.VK_RIGHT: 
+			board.moveCharacter('r');
+			break;
+		}
+		ctrl.update();
+	}
+	public void keyPressed(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {}
 	
 }

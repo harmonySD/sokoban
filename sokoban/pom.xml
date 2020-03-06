@@ -80,7 +80,7 @@
     </pluginManagement>
       <resources>
      <resource>
-       <directory>src/my-resources</directory>
+       <directory>Textures</directory>
      </resource>
    </resources>
   </build>
