@@ -46,7 +46,6 @@ public class Audio extends Thread{
                     return;
         }
         line.start();
-        //Fenetre.begin=true;
         try {
             byte bytes[] = new byte[1024];
             int bytesRead=0;
