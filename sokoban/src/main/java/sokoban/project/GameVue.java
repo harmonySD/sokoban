@@ -10,7 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
+
 public class GameVue extends JFrame implements KeyListener {
+	Audio son =new Audio();
 	public Controleur ctrl;
 	public GameVue(String nom) {
 		ctrl=new Controleur(this, nom);
@@ -33,6 +36,7 @@ public class GameVue extends JFrame implements KeyListener {
 		this.setSize(1000,1000);
 		ctrl.update();
 		this.addKeyListener(this);
+		son.start();
 		
 	}
 	public JPanel getBas() {
