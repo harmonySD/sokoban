@@ -7,6 +7,7 @@ public class Board {
 	private Character ch;
 
 	// =================Constructeurs =========================
+
 	public Board(int szx, int szy) {
 		this.tab = new Case[szx][szy];
 		ch = new Character(0, 0);
@@ -18,6 +19,7 @@ public class Board {
 	}
 
 	// ================= Accesseurs et mutateurs ==============
+
 	public int getHeight() {
 		return this.tab.length;
 	}

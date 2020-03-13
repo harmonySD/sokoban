@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="92563978-7d27-4c7f-909f-394d14c5ceb3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Textures/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sokoban/project/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sokoban/project/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sokoban/project/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sokoban/project/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sokoban/project/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sokoban/project/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sokoban/project/BoardVue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sokoban/project/Case.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sokoban/project/Case.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sokoban/project/Character.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sokoban/project/Content.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sokoban/project/Empty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sokoban/project/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sokoban/project/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sokoban/project/Wall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/sokoban/project/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sokoban/project/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sokoban/project/BoardVue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sokoban/project/Content.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sokoban/project/Empty.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sokoban/project/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sokoban/project/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sokoban/project/Wall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1Z4SqPw9BMhVmAkFO6Y9K5Ub7J1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="92563978-7d27-4c7f-909f-394d14c5ceb3" name="Default Changelist" comment="" />
+      <created>1584097063805</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584097063805</updated>
+    </task>
+    <servers />
+  </component>
+</project>
