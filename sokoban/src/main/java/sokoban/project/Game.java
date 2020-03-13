@@ -22,4 +22,7 @@ public class Game{
 	public void setBoard(Board b){ this.board=b; }
 
 
+
+
+
 }

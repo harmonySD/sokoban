@@ -174,6 +174,24 @@ public class Board {
 		}
 	}
 
+	public boolean win(){
+		for(int i=0; i<getHeight(); i++){
+			for (int j=0;j<getLength() ;j++ ) {
+				if(tab[i][j].getContent() instanceof Box && tab[i][j].getColor()=="red"){
+					return true;
+				}
+				if(tab[i][j].getContent() instanceof Box && tab[i][j].getColor()=="green"){
+					return true;
+				}
+				if(tab[i][j].getContent() instanceof Box && tab[i][j].getColor()=="blue"){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+
 	// Ce init est là pour faire des test ou bien pour définir une configuration par
 	// défaut
 

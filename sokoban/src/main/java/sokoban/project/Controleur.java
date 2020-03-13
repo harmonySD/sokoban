@@ -28,5 +28,7 @@ public class Controleur /*implements KeyListener */{
 		((JLabel)vue.getBas().getComponents()[1]).setText("Score : "+Integer.toString(modele.getPlayer().getscore()));
 		System.out.println(modele.getBoard().getChar().getX()+" "+modele.getBoard().getChar().getY());
 		vue.repaint();
+
+		if(modele.getBoard().win()){System.out.println("GAGNE");}
 	}
 }
