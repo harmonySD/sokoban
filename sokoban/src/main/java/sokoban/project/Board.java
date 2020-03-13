@@ -154,6 +154,7 @@ public class Board {
 				this.getCase(x, y + 1).setChar(true);
 				ch.setY(y + 1);
 				this.getCase(x, y).setChar(false);
+				if(win())
 				break;
 			case 'l':
 				this.getCase(x, y - 1).setChar(true);
@@ -172,6 +173,17 @@ public class Board {
 				break;
 			}
 		}
+	}
+
+	public boolean win(int x, int y){
+		for(int i=0; i<getHeight(); i++){
+			for (int j=0;j<getLength() ;j++ ) {
+				if(tab[i][j] instanceof Box){
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	// Ce init est là pour faire des test ou bien pour définir une configuration par
