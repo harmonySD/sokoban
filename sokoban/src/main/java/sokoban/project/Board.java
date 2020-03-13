@@ -5,11 +5,13 @@ import java.awt.event.KeyEvent;
 public class Board {
 	private Case[][] tab;
 	private Character ch;
+	private int nb_coup;
 
 	// =================Constructeurs =========================
 	public Board(int szx, int szy) {
 		this.tab = new Case[szx][szy];
 		ch = new Character(0, 0);
+		nb_coup = 0;
 	}
 
 	public Board() {
@@ -25,6 +27,12 @@ public class Board {
 	public int getLength() {
 		return this.tab[0].length;
 	}
+
+	public int getCoup() { return this.nb_coup; }
+
+	public void setCoup(int i) { this.nb_coup = i; }
+
+	public void incrementeCoup() { this.setCoup(this.getCoup() + 1); }
 
 	public Case getCase(int x, int y) {
 		return tab[y][x];
@@ -147,6 +155,8 @@ public class Board {
 		Case myCharacter = this.getCase(x, y);
 		//
 		if (askMoveCharacter(x, y, destination)) {
+			// Incrémenter le nombre de coups
+			this.incrementeCoup();
 			// Effectuer le mouvement en mettant une box dans la case destination
 			// Et en vidant la case depart du character
 			switch (destination) {

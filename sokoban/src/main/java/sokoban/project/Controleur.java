@@ -25,10 +25,15 @@ public class Controleur /*implements KeyListener */{
 			}
 		}
 		((JLabel)vue.getBas().getComponents()[0]).setText(modele.getPlayer().getNickname());
-		((JLabel)vue.getBas().getComponents()[1]).setText("Score : "+Integer.toString(modele.getPlayer().getscore()));
+		((JLabel)vue.getBas().getComponents()[1]).setText("Score : "+Integer.toString(modele.getPlayer().getScore()));
 		System.out.println(modele.getBoard().getChar().getX()+" "+modele.getBoard().getChar().getY());
 		vue.repaint();
 
-		if(modele.getBoard().win()){System.out.println("GAGNE");}
+		if(modele.getBoard().win()){
+			int nb_coup = this.getModele().getBoard().getCoup();
+			int etoile = (nb_coup < 10) ? 3 : (nb_coup < 20) ? 2 : 1 ;
+			System.out.println("GAGNE. VOUS ETES A " + etoile + " ETOILES !");
+			this.getModele().getPlayer().setScore(this.getModele().getPlayer().getScore() + etoile * 10);
+		}
 	}
 }
