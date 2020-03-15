@@ -13,3 +13,4 @@ sokoban/project/Controleur.class
 sokoban/project/Box.class
 sokoban/project/CaseVue.class
 sokoban/project/Wall.class
+sokoban/project/MenuVue.class

@@ -14,7 +14,8 @@ public class App
 	System.out.println("Choisissez votre nom :");
 	String nom=sc.next();
 	EventQueue.invokeLater( () -> {
-		new GameVue(nom);
+		//new GameVue(nom);
+		new MenuVue();
 	});
     }
 }
