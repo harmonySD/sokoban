@@ -2,6 +2,7 @@ sokoban/project/Game.class
 sokoban/project/Board.class
 sokoban/project/BoardVue.class
 sokoban/project/Empty.class
+sokoban/project/FondVue.class
 sokoban/project/App.class
 sokoban/project/Case.class
 sokoban/project/GameVue.class
