@@ -26,6 +26,7 @@ public class MenuVue extends JFrame implements ActionListener{
 	private GameVue fen2;
 	private JPanel pan= new FondVue();
 	private JButton b1= new JButton("Start");
+	private JButton b2= new JButton("Editeur");
 	private String nom;
 	private String path;
 
@@ -35,7 +36,7 @@ public class MenuVue extends JFrame implements ActionListener{
 		this.setTitle ("Sokoban");
 		this.setSize(1000,1000);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		b1.setBounds(200,150,300,200);
+		b1.setBounds(100,150,300,100);
 		pan.add(b1);
 		setContentPane(pan);
 		b1.addActionListener(this);

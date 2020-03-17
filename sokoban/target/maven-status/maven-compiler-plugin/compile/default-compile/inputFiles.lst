@@ -3,12 +3,14 @@
 /Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/Box.java
 /Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/Audio.java
 /Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/BoardVue.java
+/Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/FondVue.java
 /Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/Game.java
 /Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/GameVue.java
 /Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/Character.java
 /Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/Empty.java
 /Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/Board.java
 /Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/Content.java
+/Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/MenuVue.java
 /Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/Controleur.java
 /Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/Player.java
 /Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/Wall.java
