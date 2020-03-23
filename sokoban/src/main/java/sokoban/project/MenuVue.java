@@ -23,13 +23,18 @@ import java.io.IOException;
 
 
 public class MenuVue extends JFrame implements ActionListener{
-	private GameVue fen2;
-	private JPanel pan= new FondVue();
+	private GameVue fenb1;
+	//private SelectVue fenb2;
+	//private OptionVue fenb3;
+	private JPanel pan= new FondVue(); // pour avoir l'image de fond 
 	private JButton b1= new JButton("Start");
-	private JButton b2= new JButton("Editeur");
+	private JButton b2= new JButton("Select Level");
+	private JButton b3= new JButton("Option");
 	private String nom;
 	private String path;
 
+	// constructeur de menuVue. 
+	//creer une fenetre avec un fond et 3 boutons qui redirigeront vers une classe associée
 	public MenuVue(String n){
 		this.nom=n;
 		pan.setLayout(null);
@@ -40,24 +45,32 @@ public class MenuVue extends JFrame implements ActionListener{
 		pan.add(b1);
 		setContentPane(pan);
 		b1.addActionListener(this);
+
+		//b2.setBounds(100,150,300,100);
+		//pan.add(b2);
+		//b2.addActionListener(this);
+		//b3.setBounds(100,150,300,100);
+		//pan.add(b3);
+		//b3.addActionListener(this);
 		this.setVisible(true);
 	}
 
 
-/*
-		this.path=System.getProperty("user.dir")+"/Textures/";
-		try {
-			bg=ImageIO.read(new File(path+"fond.bmp"));
-		}
-		catch (IOException e) {
-			System.out.println("fichier introuvable");
-		}
-	}
-*/
-
+	//En premier on "ferme" cette fenetre
+	//si l'utilisateur clique sur le bouton Start -> rediriger vers une fenetre de jeu 
+	//si l'utilisatuer clique sur le bouton Select level-> rediriger vers une fenetre pour choix de niveau 
+	//si l'utilisateur clique sue le bouton Option -> rediriger vers une fenetr epour choisir profil etc 
 	public void actionPerformed(ActionEvent arg0){
 		this.dispose();
-		fen2= new GameVue(nom);
+		if(arg0.getSource()==b1){
+			fenb1= new GameVue(nom);
+		}
+		else if(arg0.getSource()== b2){
+			//fenb2= new SelectVue();
+		}
+		else if (arg0.getSource() ==b3){
+			//fenb3= new OptionVue();
+		}
 	}
 
 }
