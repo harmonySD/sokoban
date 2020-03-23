@@ -1,6 +1,6 @@
 package sokoban.project;
 
-public class Game{
+public class Game {
 	private Player player;
 	private Board board;
 	private int score;

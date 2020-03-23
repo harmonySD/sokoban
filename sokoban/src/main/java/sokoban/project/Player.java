@@ -12,7 +12,7 @@ public class Player{
 	}
 
 /*getter for score*/
-	public int getscore(){
+	public int getScore(){
 		return this.score;
 	}
 /*getter for nickname*/
