@@ -42,9 +42,8 @@ public class GameVue extends JFrame implements KeyListener {
 		son.start();
 	}
 
-	public void youWin(){
-		this.dispose();
-
+	public void stopSoundPlease(){
+		son.stop();
 	}
 
 

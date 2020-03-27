@@ -40,7 +40,7 @@ public class MenuVue extends JFrame implements ActionListener{
 		pan.setLayout(null);
 		this.setTitle ("Sokoban");
 		this.setSize(1000,1000);
-		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
 		b1.setBounds(100,150,300,100);
 		pan.add(b1);
 		setContentPane(pan);

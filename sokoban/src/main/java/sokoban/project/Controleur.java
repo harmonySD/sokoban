@@ -4,6 +4,9 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JLabel;
 
+import java.util.*; 
+import java.lang.*; 
+
 public class Controleur /*implements KeyListener */{
 	private GameVue vue;
 	private Game modele;
@@ -31,8 +34,11 @@ public class Controleur /*implements KeyListener */{
 
 		if(modele.getBoard().win()){
 
-			//System.out.println("GAGNE");
-			//vue.
+			System.out.println("GAGNE");
+			//System.exit(0);
+			vue.stopSoundPlease();
+			vue.dispose();
+			new YouWinVue();
 		}
 	}
 }
