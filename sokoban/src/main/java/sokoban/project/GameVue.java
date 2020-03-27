@@ -15,7 +15,8 @@ import javax.swing.JPanel;
 
 
 public class GameVue extends JFrame implements KeyListener {
-	Audio son =new Audio();
+	public Audio son =new Audio();
+	private YouWinVue fen1; 
 	public Controleur ctrl;
 	public GameVue(String nom) {
 		ctrl=new Controleur(this, nom);
@@ -39,9 +40,15 @@ public class GameVue extends JFrame implements KeyListener {
 		ctrl.update();
 		this.addKeyListener(this);
 		son.start();
-
-		
 	}
+
+	public void youWin(){
+		this.dispose();
+
+	}
+
+
+
 	public JPanel getBas() {
 		return (JPanel)(this.getContentPane().getComponents()[1]);
 	}

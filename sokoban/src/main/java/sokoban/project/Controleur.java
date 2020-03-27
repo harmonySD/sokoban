@@ -29,6 +29,10 @@ public class Controleur /*implements KeyListener */{
 		System.out.println(modele.getBoard().getChar().getX()+" "+modele.getBoard().getChar().getY());
 		vue.repaint();
 
-		if(modele.getBoard().win()){System.out.println("GAGNE");}
+		if(modele.getBoard().win()){
+
+			//System.out.println("GAGNE");
+			//vue.
+		}
 	}
 }

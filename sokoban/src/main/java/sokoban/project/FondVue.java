@@ -18,7 +18,7 @@ public class FondVue extends JPanel {
 	public FondVue() {
 		this.path=System.getProperty("user.dir")+"/Textures/";
 		try {
-			bg=ImageIO.read(new File(path+"Fond.bmp"));
+			bg=ImageIO.read(new File(path+"fond.bmp"));
 		}
 		catch (IOException e) {
 			System.out.println("fichier introuvable");
