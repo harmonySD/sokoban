@@ -8,9 +8,11 @@ public class Audio extends Thread{
      
     AudioInputStream audioInputStream = null;
     SourceDataLine line;
+    private String path;
      
     public void run(){
-        File fichier = new File("/Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/src/main/java/sokoban/project/Kubi.wav");
+        this.path=System.getProperty("user.dir")+"/src/main/java/sokoban/project/";
+        File fichier = new File(path+"Kubi.wav");
         try {
         @SuppressWarnings("unused")
         AudioFileFormat format = AudioSystem.getAudioFileFormat(fichier);
