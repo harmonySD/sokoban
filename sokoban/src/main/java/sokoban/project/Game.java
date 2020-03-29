@@ -1,4 +1,5 @@
 package sokoban.project;
+import java.io.*;
 
 public class Game {
 	private Player player;
@@ -74,4 +75,3 @@ public class Game {
 
 
 
-}
