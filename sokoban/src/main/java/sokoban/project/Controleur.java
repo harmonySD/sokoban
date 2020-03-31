@@ -43,7 +43,7 @@ public class Controleur /*implements KeyListener */{
 			//System.exit(0);
 			vue.stopSoundPlease();
 			vue.dispose();
-			new YouWinVue();
+			new YouWinVue(etoile*10);
 		}
 	}
 }
