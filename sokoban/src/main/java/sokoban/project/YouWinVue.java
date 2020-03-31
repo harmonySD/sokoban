@@ -29,12 +29,14 @@ public class YouWinVue extends JFrame implements ActionListener{
 	//private JPanel pan= new FondVue(); // pour avoir l'image de fond 
 	private JButton b1= new JButton("Back to menu");
 	private JButton b2= new JButton("Select other Level");
-	private JLabel lab1= new JLabel("GAGNE ! Ton score est de :", SwingConstants.CENTER);
+	private JLabel lab1= new JLabel();
+
 
 	// constructeur de menuVue. 
 	//creer une fenetre avec un fond et 3 boutons qui redirigeront vers une classe associée
-	public YouWinVue(){
-		
+	public YouWinVue(int score){
+		lab1.setText("GAGNE ! Ton score est de :"+score);
+		lab1.setHorizontalAlignment(JLabel.CENTER);
 		//pan.setLayout(null);
 		this.setTitle ("Sokoban");
 		this.setSize(1000,1000);
