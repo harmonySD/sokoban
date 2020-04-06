@@ -22,7 +22,6 @@ public class Game {
 	public Board getBoard(){ return this.board; }
 	public void setBoard(Board b){ this.board=b; }
 	
-	
 	void level_saver (String levelname ) {
 			try{
 			PrintWriter fichier = new PrintWriter(new FileWriter(levelname+".txt"));
@@ -68,10 +67,74 @@ public class Game {
 		fichier.close();
 		}catch (IOException e){};
 	}
+
+
+
+	void level_loader (String filepath ){
+		File test = new File(filepath); // File ou autre chose ? 
+		if (!test.exists())return ; 
+		try{
+		Reader fichier = new FileReader(filepath);
+		int data = ' ' ; // stockeur cractère par caractère 
+		String temp = null; // stockeur "case par case "
+		int len =  0;
+		int hei = 0;
+		String slen = new String();
+		String shei = new String();
+		do{
+			data =  fichier.read();
+			if (data ==-1 || (char)data==(',')) break;
+			slen += data;
+			}
+		while (data !=-1 && (char)data!=(',') );
+		
+		do{
+			data =  fichier.read();
+			if (data ==-1 || (char)data==(';'))break;
+			shei += data;
+			}
+		while (data !=-1 && (char)data!=(';') );
+		//lecture de la taille du board 
+		
+		try {
+		   len  = Integer.parseInt(slen);
+		   hei  = Integer.parseInt(shei);
+			}
+			catch (NumberFormatException e){
+		   return ;
+			}
+			Board  borstock = new Board(len,hei);
+			for (int i =0;i<len;i++){
+				for(int j =0;i<hei;j++){
+					Case stockeur = borstock.getCase(i,j);
+					data= fichier.read(); 
+					while (data != ',' && data !=-1){ 
+						if ((char)data==('W'))stockeur.setContent(new Wall());
+						else if ((char)data==('N'))stockeur.setContent(new Content());
+						// le prochain caractère doit être une virgule mais  on laisse le while parcourir de lui même
+						else{ 
+							if((char)data==('E'))stockeur.setContent(new Empty());
+							// else est-il si nécessaire que ça ? 
+							// on ouvre un else car tout les caractères qui suivent admettent une ou plusieurs lettres
+							//dans leurs " code de sauvegarde "
+							if ((char)data==('P')){
+								borstock.getChar().setX(i);
+								borstock.getChar().setY(j);
+								stockeur.setContent(new Empty()); 
+								}
+							if ((char)data==('R'))stockeur.setColor("red");
+							if ((char)data==('G'))stockeur.setColor("green");
+							if ((char)data==('B'))stockeur.setColor("blue");
+							if ((char)data==('r'))stockeur.setContent(new Box("red"));
+							if ((char)data==('g'))stockeur.setContent(new Box("green"));
+							if ((char)data==('b'))stockeur.setContent(new Box("blue"));
+							if ((char)data==('+'))stockeur.setBonus(true);
+						} 
+					} 
+				}
+			}
+			fichier.close();
+			this.board = borstock;
+		}catch (java.io.IOException  e ){return;}	
+	}
 }
-
-
-
-
-
-

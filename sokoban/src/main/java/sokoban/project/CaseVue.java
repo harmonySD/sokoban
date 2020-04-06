@@ -38,7 +38,7 @@ public class CaseVue extends JPanel {
 	public void update() {
 		if(c.getContent() instanceof Empty) {
 			try {
-				switch(c.getColor()) {
+				switch(c.getColor()) {// check if works with loaded maps
 					case("red") : 
 						fg=ImageIO.read(new File(path+"Objective_R.bmp"));
 						break;

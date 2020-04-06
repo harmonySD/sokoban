@@ -206,7 +206,6 @@ public class Board {
 	// défaut
 
 	public void init() {
-
 		for (int i = 0; i < tab.length; i++) {
 			tab[i][0] = new Case(new Wall());
 			tab[i][tab.length - 1] = new Case(new Wall());
