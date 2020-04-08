@@ -16,7 +16,7 @@ public class Board {
 
 	public Board() {
 		this(10, 10);
-		init();
+		//init();
 	}
 
 	// ================= Accesseurs et mutateurs ==============
@@ -36,6 +36,10 @@ public class Board {
 
 	public Case getCase(int x, int y) {
 		return tab[y][x];
+	}
+	
+	public void setCase(int x, int y, Case c ){
+		this.tab [y][x] = c ;
 	}
 
 	public Character getChar() {

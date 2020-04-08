@@ -13,6 +13,7 @@ public class Game {
 	}
 	public Game(String n) {
 		this(new Player(n), new Board());
+		level_loader("niveautest.txt");
 	}
 
 	// ===================== Getter & Setter ========================
@@ -84,14 +85,14 @@ public class Game {
 		do{
 			data =  fichier.read();
 			if (data ==-1 || (char)data==(',')) break;
-			slen += data;
+			slen += (char)data;
 			}
 		while (data !=-1 && (char)data!=(',') );
 		
 		do{
 			data =  fichier.read();
 			if (data ==-1 || (char)data==(';'))break;
-			shei += data;
+			shei += (char)data;
 			}
 		while (data !=-1 && (char)data!=(';') );
 		//lecture de la taille du board 
@@ -104,11 +105,13 @@ public class Game {
 		   return ;
 			}
 			Board  borstock = new Board(len,hei);
+			Case stockeur ;
 			for (int i =0;i<len;i++){
-				for(int j =0;i<hei;j++){
-					Case stockeur = borstock.getCase(i,j);
-					data= fichier.read(); 
+				for(int j =0;j<hei;j++){
+					borstock.setCase(i,j,new Case(new Empty()));
+					stockeur =borstock.getCase(i,j);  
 					while (data != ',' && data !=-1){ 
+					data= fichier.read(); 
 						if ((char)data==('W'))stockeur.setContent(new Wall());
 						else if ((char)data==('N'))stockeur.setContent(new Content());
 						// le prochain caractère doit être une virgule mais  on laisse le while parcourir de lui même
@@ -121,6 +124,7 @@ public class Game {
 								borstock.getChar().setX(i);
 								borstock.getChar().setY(j);
 								stockeur.setContent(new Empty()); 
+								stockeur.setChar(true);
 								}
 							if ((char)data==('R'))stockeur.setColor("red");
 							if ((char)data==('G'))stockeur.setColor("green");
@@ -131,10 +135,11 @@ public class Game {
 							if ((char)data==('+'))stockeur.setBonus(true);
 						} 
 					} 
-				}
+				}System.out.println("Ligne  "+(i+1)+"/"+hei+" chargée "); 
 			}
 			fichier.close();
 			this.board = borstock;
-		}catch (java.io.IOException  e ){return;}	
+		}catch (java.io.IOException  e ){return;}
+	System.out.println("Le chargement du fichier "+filepath+" a eu lieu avec succès ");
 	}
 }
