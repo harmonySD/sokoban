@@ -74,72 +74,84 @@ public class Game {
 	void level_loader (String filepath ){
 		File test = new File(filepath); // File ou autre chose ? 
 		if (!test.exists())return ; 
+		int nmur = 0;
+		int npers = 0;
+		int nvide = 0;
+	    int nbox = 0;
+		int nbo = 0;
+		int nbpv =0;
 		try{
-		Reader fichier = new FileReader(filepath);
-		int data = ' ' ; // stockeur cractère par caractère 
-		String temp = null; // stockeur "case par case "
-		int len =  0;
-		int hei = 0;
-		String slen = new String();
-		String shei = new String();
-		do{
-			data =  fichier.read();
-			if (data ==-1 || (char)data==(',')) break;
-			slen += (char)data;
-			}
-		while (data !=-1 && (char)data!=(',') );
-		
-		do{
-			data =  fichier.read();
-			if (data ==-1 || (char)data==(';'))break;
-			shei += (char)data;
-			}
-		while (data !=-1 && (char)data!=(';') );
-		//lecture de la taille du board 
-		
-		try {
-		   len  = Integer.parseInt(slen);
-		   hei  = Integer.parseInt(shei);
+			Reader fichier = new FileReader(filepath);
+			int data = ' ' ; // stockeur cractère par caractère 
+			String temp = null; // stockeur "case par case "
+			int len =  0;
+			int hei = 0;
+			String slen = new String();// le string qui contient la longueur du tableau
+			String shei = new String();// me chose hauteur 
+			do{
+				data =  fichier.read();
+				if (data ==-1 || (char)data==(',')) break; // si fin de fichier 
+				slen += (char)data;
+				}
+			while (data !=-1 && (char)data!=(',') );
+			
+			do{
+				data =  fichier.read();
+				if (data ==-1 || (char)data==(';'))break;
+				shei += (char)data;
+				}
+			while (data !=-1 && (char)data!=(';') );
+			//lecture de la taille du board 
+			try {// tentative de conversion des informations lues dans le fichier 
+			   len  = Integer.parseInt(slen);// en  un nombre longueur 
+			   hei  = Integer.parseInt(shei); // hauteur 
 			}
 			catch (NumberFormatException e){
-		   return ;
+			   return ;
 			}
-			Board  borstock = new Board(len,hei);
-			Case stockeur ;
-			for (int i =0;i<len;i++){
-				for(int j =0;j<hei;j++){
-					borstock.setCase(i,j,new Case(new Empty()));
-					stockeur =borstock.getCase(i,j);  
-					while (data != ',' && data !=-1){ 
-					data= fichier.read(); 
-						if ((char)data==('W'))stockeur.setContent(new Wall());
-						else if ((char)data==('N'))stockeur.setContent(new Content());
-						// le prochain caractère doit être une virgule mais  on laisse le while parcourir de lui même
-						else{ 
-							if((char)data==('E'))stockeur.setContent(new Empty());
-							// else est-il si nécessaire que ça ? 
-							// on ouvre un else car tout les caractères qui suivent admettent une ou plusieurs lettres
-							//dans leurs " code de sauvegarde "
-							if ((char)data==('P')){
-								borstock.getChar().setX(i);
-								borstock.getChar().setY(j);
-								stockeur.setContent(new Empty()); 
-								stockeur.setChar(true);
-								}
-							if ((char)data==('R'))stockeur.setColor("red");
-							if ((char)data==('G'))stockeur.setColor("green");
-							if ((char)data==('B'))stockeur.setColor("blue");
-							if ((char)data==('r'))stockeur.setContent(new Box("red"));
-							if ((char)data==('g'))stockeur.setContent(new Box("green"));
-							if ((char)data==('b'))stockeur.setContent(new Box("blue"));
-							if ((char)data==('+'))stockeur.setBonus(true);
+				Board  borstock = new Board(len,hei);
+				Case stockeur ; // variable tampon, stocke la case du tableau en cours de création 
+				for (int i =0;i<len;i++){System.out.print("\n");
+					for(int j =0;j<hei;j++){
+						borstock.setCase(i,j,new Case(new Empty())); // création d'une case 
+						stockeur =borstock.getCase(i,j);   // récupération de la case pour travailler dessus
+						while ((char)data != ',' && data !=-1){// tant qu'on n'a pas atteint la fin du fichier et que l'on est entrain de traiter une case 
+						data= fichier.read(); // lecture 
+						System.out.print(data);
+							if ((char)data==('W')){stockeur.setContent(new Wall()); nmur++;} 
+							else if ((char)data==('N')){stockeur.setContent(new Content());nvide ++;}
+							// le prochain caractère doit être une virgule mais  on laisse le while parcourir de lui même
+							else{  // else est-il si nécessaire que ça ? 
+								if((char)data==('E'))stockeur.setContent(new Empty());
+								// on ouvre un else car tous les caractères qui suivent admettent une ou plusieurs lettres
+								//dans leurs " code de sauvegarde "
+								if ((char)data==('P')){
+									borstock.getChar().setX(i);
+									borstock.getChar().setY(j);
+									stockeur.setContent(new Empty()); 
+									stockeur.setChar(true);
+									npers ++;
+									}
+								if ((char)data==('R')){stockeur.setColor("red");nbpv ++;}
+								if ((char)data==('G')){stockeur.setColor("green");nbpv ++;}
+								if ((char)data==('B')){stockeur.setColor("blue");nbpv ++;}
+								if ((char)data==('r')){stockeur.setContent(new Box("red"));nbox++;}
+								if ((char)data==('g')){stockeur.setContent(new Box("green"));nbox++;}
+								if ((char)data==('b')){stockeur.setContent(new Box("blue"));nbox++;}
+								if ((char)data==('+')){stockeur.setBonus(true);nbo++;}
+							} 
 						} 
-					} 
-				}System.out.println("Ligne  "+(i+1)+"/"+hei+" chargée "); 
+						System.out.print(",");
+					}System.out.println("Ligne  "+(i+1)+"/"+hei+" chargée "); 
 			}
 			fichier.close();
 			this.board = borstock;
 		}catch (java.io.IOException  e ){return;}
 	System.out.println("Le chargement du fichier "+filepath+" a eu lieu avec succès ");
+	System.out.println("Ont été chargés : \nVides " +nvide+"\nMurs" +nmur+"\nPersonnage "+npers+ "\nCaisses "+nbox +"\nBonus "+nbo  +"\n Points de victoires"  +nbpv);
 	}
+	
+	
+	
+
 }
