@@ -115,9 +115,9 @@ public class Game {
 					for(int j =0;j<hei;j++){
 						borstock.setCase(i,j,new Case(new Empty())); // création d'une case 
 						stockeur =borstock.getCase(i,j);   // récupération de la case pour travailler dessus
-						while ((char)data != ',' && data !=-1){// tant qu'on n'a pas atteint la fin du fichier et que l'on est entrain de traiter une case 
+						do{// tant qu'on n'a pas atteint la fin du fichier et que l'on est entrain de traiter une case 
 						data= fichier.read(); // lecture 
-						System.out.print(data);
+						System.out.print((char)data);
 							if ((char)data==('W')){stockeur.setContent(new Wall()); nmur++;} 
 							else if ((char)data==('N')){stockeur.setContent(new Content());nvide ++;}
 							// le prochain caractère doit être une virgule mais  on laisse le while parcourir de lui même
@@ -140,15 +140,14 @@ public class Game {
 								if ((char)data==('b')){stockeur.setContent(new Box("blue"));nbox++;}
 								if ((char)data==('+')){stockeur.setBonus(true);nbo++;}
 							} 
-						} 
-						System.out.print(",");
+						}while ((char)data != ',' && data !=-1);
 					}System.out.println("Ligne  "+(i+1)+"/"+hei+" chargée "); 
 			}
 			fichier.close();
 			this.board = borstock;
 		}catch (java.io.IOException  e ){return;}
 	System.out.println("Le chargement du fichier "+filepath+" a eu lieu avec succès ");
-	System.out.println("Ont été chargés : \nVides " +nvide+"\nMurs" +nmur+"\nPersonnage "+npers+ "\nCaisses "+nbox +"\nBonus "+nbo  +"\n Points de victoires"  +nbpv);
+	System.out.println("Ont été chargés : \nVides " +nvide+"\nMurs" +nmur+"\nPersonnage "+npers+ "\nCaisses "+nbox +"\nBonus "+nbo  +"\nPoints de victoires "  +nbpv);
 	}
 	
 	
