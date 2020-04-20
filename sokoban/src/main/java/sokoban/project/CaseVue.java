@@ -23,7 +23,7 @@ public class CaseVue extends JPanel {
 			bg=ImageIO.read(new File((rd>0.05)?path+"Ground.bmp":path+"Ground_Damaged.bmp"));
 		}
 		catch (IOException e) {
-			System.out.println("fichier introuvable");
+			System.out.println(path +" fichier introuvable");
 		}
 		this.c=c;
 		this.setVisible(true);
@@ -53,11 +53,11 @@ public class CaseVue extends JPanel {
 							break;
 				}
 			}
-			catch (IOException e) { System.out.println("Fichier Introuvable");}
+			catch (IOException e) { System.out.println(path + "Fichier objectif Introuvable");}
 		}
 		if(c.getContent() instanceof Wall) {
 			try {fg=ImageIO.read(new File(path+"Wall.bmp"));}
-			catch (IOException e) { System.out.println("Fichier Introuvable");}
+			catch (IOException e) { System.out.println(path+"Wall.bmp Fichier Introuvable");}
 		}
 		if(c.getContent() instanceof Box) {
 			try {
@@ -76,7 +76,7 @@ public class CaseVue extends JPanel {
 						break;
 				}
 			}
-			catch (IOException e) { System.out.println("Fichier Introuvable");}
+			catch (IOException e) { System.out.println(path + "Box_R Fichier Introuvable");}
 		}
 		if(c.getChar()) {
 			try {fg=ImageIO.read(new File(path+"Character.bmp"));}
