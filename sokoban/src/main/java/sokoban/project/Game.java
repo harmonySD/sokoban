@@ -72,7 +72,7 @@ public class Game {
 
 
 	void level_loader (String filepath ){
-		File test = new File(filepath); // File ou autre chose ? 
+		File test = new File("/Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/target/niveautest.txt"); // File ou autre chose ? 
 		if (!test.exists()){System.out.println("Fichier de chargement introuvable, arret");return; }
 		int nmur = 0;
 		int npers = 0;
@@ -81,7 +81,7 @@ public class Game {
 		int nbo = 0;
 		int nbpv =0;
 		try{
-			Reader fichier = new FileReader(filepath);
+			Reader fichier = new FileReader("/Users/harmonysimon-duchatel/sokoban/sokoban/sokoban/target/niveautest.txt");
 			int data = ' ' ; // stockeur cractère par caractère 
 			String temp = null; // stockeur "case par case "
 			int len =  0;
