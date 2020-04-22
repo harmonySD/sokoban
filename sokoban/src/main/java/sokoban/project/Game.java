@@ -11,10 +11,12 @@ public class Game {
 	public Game(Player p, Board b){
 		this.player=p;
 		this.board=b;
+		this.path=System.getProperty("user.dir");// sera appelé dans les deux cas 
 	}
-	public Game(String n) {////
+	public Game(String n) {
 		this(new Player(n), new Board());
-		level_loader("niveautest.txt");
+		//level_loader("/target/niveautest.txt"); // ajoutez cette ligne pour texter la fonction de chargement 
+		
 	}
 
 	// ===================== Getter & Setter ========================
@@ -72,24 +74,26 @@ public class Game {
 
 
 
-	void level_loader (String filepath ){
-		this.path=System.getProperty("user.dir")+"/target/niveautest.txt";
-		File test = new File(path); // File ou autre chose ? 
-		if (!test.exists()){System.out.println("Fichier de chargement introuvable, arret");return; }
+	boolean level_loader (String filepath ){
+		File test = new File(this.path+filepath);
+		System.out.println("Tentative de chargement de niveau depuis " + this.path+filepath );
+		if (!test.exists()){System.out.println(" Fichier à charger introuvable, arret");return false ; }
 		int nmur = 0;
 		int npers = 0;
 		int nvide = 0;
 	    int nbox = 0;
 		int nbo = 0;
 		int nbpv =0;
+		int casw = 0; // nb cases écrits pour compter à la fin 
+		int lenw = 0;// nbl ligne réellement écrite pour test à la fin 
 		try{
-			Reader fichier = new FileReader(path);
-			int data = ' ' ; // stockeur cractère par caractère 
+			Reader fichier = new FileReader(this.path+filepath);
+			int data = ' '; // stockeur cractère par caractère 
 			String temp = null; // stockeur "case par case "
 			int len =  0;
 			int hei = 0;
 			String slen = new String();// le string qui contient la longueur du tableau
-			String shei = new String();// me chose hauteur 
+			String shei = new String();// meme chose pour la hauteur 
 			do{
 				data =  fichier.read();
 				if (data ==-1 || (char)data==(',')) break; // si fin de fichier 
@@ -110,12 +114,14 @@ public class Game {
 			}
 			catch (NumberFormatException e){
 				System.out.println("NumberFormatException");
-			   return ;
+			   return false ;
 			}
 				Board  borstock = new Board(len,hei);
 				Case stockeur ; // variable tampon, stocke la case du tableau en cours de création 
 				for (int i =0;i<len;i++){System.out.print("\n");
+				lenw++; // pour savoir si le fichier n'était corrompu et nb case écrit incomplet  
 					for(int j =0;j<hei;j++){
+						casw++; // // pour savoir si le fichier n'était corrompu et nb case écrit incomplet  
 						borstock.setCase(i,j,new Case(new Empty())); // création d'une case 
 						stockeur =borstock.getCase(i,j);   // récupération de la case pour travailler dessus
 						do{// tant qu'on n'a pas atteint la fin du fichier et que l'on est entrain de traiter une case 
@@ -147,15 +153,14 @@ public class Game {
 					}System.out.println("Ligne  "+(i+1)+"/"+hei+" chargée "); 
 			}
 			fichier.close();
+			if(lenw != len  || casw != hei*len ){System.out.println("Erreur, le fichier est peut être corrompu, nombre de case écrit différent de celui attendu :  len attendu  "+ len+" vs obtenu "+lenw +" nb total écriture  attendu "+ hei*len +" vs obtenu "+casw );return false ;}
 			this.board = borstock;
 		}catch (java.io.IOException  e ){
-			System.out.print("JAVA IO EXCEPTION");
-			return;}
+			System.out.println("JAVA IO EXCEPTION");
+			
+			}
 	System.out.println("Le chargement du fichier "+filepath+" a eu lieu avec succès ");
 	System.out.println("Ont été chargés : \nVides " +nvide+"\nMurs" +nmur+"\nPersonnage "+npers+ "\nCaisses "+nbox +"\nBonus "+nbo  +"\nPoints de victoires "  +nbpv);
+	return true ;
 	}
-	
-	
-	
-
 }
