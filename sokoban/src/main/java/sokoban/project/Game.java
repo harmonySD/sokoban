@@ -11,7 +11,7 @@ public class Game {
 		this.player=p;
 		this.board=b;
 	}
-	public Game(String n) {
+	public Game(String n) {////
 		this(new Player(n), new Board());
 		level_loader("niveautest.txt");
 	}
@@ -73,7 +73,7 @@ public class Game {
 
 	void level_loader (String filepath ){
 		File test = new File(filepath); // File ou autre chose ? 
-		if (!test.exists())return ; 
+		if (!test.exists()){System.out.println("Fichier de chargement introuvable, arret");return; }
 		int nmur = 0;
 		int npers = 0;
 		int nvide = 0;
@@ -107,6 +107,7 @@ public class Game {
 			   hei  = Integer.parseInt(shei); // hauteur 
 			}
 			catch (NumberFormatException e){
+				System.out.println("NumberFormatException");
 			   return ;
 			}
 				Board  borstock = new Board(len,hei);
@@ -145,7 +146,9 @@ public class Game {
 			}
 			fichier.close();
 			this.board = borstock;
-		}catch (java.io.IOException  e ){return;}
+		}catch (java.io.IOException  e ){
+			System.out.print("JAVA IO EXCEPTION");
+			return;}
 	System.out.println("Le chargement du fichier "+filepath+" a eu lieu avec succès ");
 	System.out.println("Ont été chargés : \nVides " +nvide+"\nMurs" +nmur+"\nPersonnage "+npers+ "\nCaisses "+nbox +"\nBonus "+nbo  +"\nPoints de victoires "  +nbpv);
 	}

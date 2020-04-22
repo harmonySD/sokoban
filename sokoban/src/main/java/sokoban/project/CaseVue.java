@@ -16,7 +16,7 @@ public class CaseVue extends JPanel {
 	private BufferedImage fg;
 	private String path;
 	
-	public CaseVue(Case c) {
+	public CaseVue(Case c) {////
 		double rd = Math.random();
 		this.path=System.getProperty("user.dir")+"/Textures/";
 		try {
@@ -36,6 +36,7 @@ public class CaseVue extends JPanel {
 	}
 	//using colors as placeholders for textures
 	public void update() {
+		if(this.c== null)System.out.println("lacase est nulle "); //// 
 		if(c.getContent() instanceof Empty) {
 			try {
 				switch(c.getColor()) {// check if works with loaded maps
