@@ -15,7 +15,7 @@ public class Game {
 	}
 	public Game(String n) {
 		this(new Player(n), new Board());
-		//level_loader("/target/niveautest.txt"); // ajoutez cette ligne pour texter la fonction de chargement 
+		level_loader("/target/niveautest.txt"); // ajoutez cette ligne pour texter la fonction de chargement 
 		
 	}
 
@@ -76,6 +76,7 @@ public class Game {
 
 	boolean level_loader (String filepath ){
 		File test = new File(this.path+filepath);
+
 		System.out.println("Tentative de chargement de niveau depuis " + this.path+filepath );
 		if (!test.exists()){System.out.println(" Fichier à charger introuvable, arret");return false ; }
 		int nmur = 0;

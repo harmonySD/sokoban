@@ -189,20 +189,36 @@ public class Board {
 	}
 
 	public boolean win(){
+		int nbB=nbBox();
+		int ok=0;
 		for(int i=0; i<getHeight(); i++){
 			for (int j=0;j<getLength() ;j++ ) {
 				if(tab[i][j].getContent() instanceof Box && tab[i][j].getColor()=="red"){
-					return true;
+					ok++;
 				}
 				if(tab[i][j].getContent() instanceof Box && tab[i][j].getColor()=="green"){
-					return true;
+					ok++;
 				}
 				if(tab[i][j].getContent() instanceof Box && tab[i][j].getColor()=="blue"){
-					return true;
+					ok++;
 				}
 			}
 		}
+		if(ok==nbB){
+			return true;
+		}
 		return false;
+	}
+	public int nbBox(){
+		int res=0;
+		for(int i=0;i<getHeight();i++){
+			for(int j=0;j<getLength();j++){
+				if(tab[i][j].getContent() instanceof Box){
+					res++;
+				}
+			}
+		}
+		return res;
 	}
 	
 
