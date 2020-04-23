@@ -17,9 +17,9 @@ import javax.swing.JPanel;
 public class GameVue extends JFrame implements KeyListener {
 	public Audio son =new Audio();
 	private YouWinVue fen1; 
-	public Controleur ctrl;
+	public Controleur ctrl;///
 	public GameVue(String nom) {
-		ctrl=new Controleur(this, nom);
+		ctrl=new Controleur(this, nom);////
 		init();
 	}
 	public void init() {
@@ -28,7 +28,7 @@ public class GameVue extends JFrame implements KeyListener {
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx=0; c.gridy=0; c.fill=GridBagConstraints.BOTH; c.weightx=1; c.weighty=0.95;
-		this.add(new BoardVue(ctrl.getModele().getBoard()),c);
+		this.add(new BoardVue(ctrl.getModele().getBoard()),c);//// 
 		JPanel bas = new JPanel();
 		bas.setLayout(new GridLayout(1,2));
 		bas.add(new JLabel());

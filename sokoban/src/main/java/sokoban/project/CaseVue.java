@@ -16,14 +16,14 @@ public class CaseVue extends JPanel {
 	private BufferedImage fg;
 	private String path;
 	
-	public CaseVue(Case c) {
+	public CaseVue(Case c) {////
 		double rd = Math.random();
 		this.path=System.getProperty("user.dir")+"/Textures/";
 		try {
 			bg=ImageIO.read(new File((rd>0.05)?path+"Ground.bmp":path+"Ground_Damaged.bmp"));
 		}
 		catch (IOException e) {
-			System.out.println("fichier introuvable");
+			System.out.println(path +" fichier introuvable");
 		}
 		this.c=c;
 		this.setVisible(true);
@@ -36,9 +36,10 @@ public class CaseVue extends JPanel {
 	}
 	//using colors as placeholders for textures
 	public void update() {
+		if(this.c== null)System.out.println("lacase est nulle "); //// 
 		if(c.getContent() instanceof Empty) {
 			try {
-				switch(c.getColor()) {
+				switch(c.getColor()) {// check if works with loaded maps
 					case("red") : 
 						fg=ImageIO.read(new File(path+"Objective_R.bmp"));
 						break;
@@ -53,11 +54,11 @@ public class CaseVue extends JPanel {
 							break;
 				}
 			}
-			catch (IOException e) { System.out.println("Fichier Introuvable");}
+			catch (IOException e) { System.out.println(path + "Fichier objectif Introuvable");}
 		}
 		if(c.getContent() instanceof Wall) {
 			try {fg=ImageIO.read(new File(path+"Wall.bmp"));}
-			catch (IOException e) { System.out.println("Fichier Introuvable");}
+			catch (IOException e) { System.out.println(path+"Wall.bmp Fichier Introuvable");}
 		}
 		if(c.getContent() instanceof Box) {
 			try {
@@ -76,7 +77,7 @@ public class CaseVue extends JPanel {
 						break;
 				}
 			}
-			catch (IOException e) { System.out.println("Fichier Introuvable");}
+			catch (IOException e) { System.out.println(path + "Box_R Fichier Introuvable");}
 		}
 		if(c.getChar()) {
 			try {fg=ImageIO.read(new File(path+"Character.bmp"));}

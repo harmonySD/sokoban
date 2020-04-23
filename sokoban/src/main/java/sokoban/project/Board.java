@@ -16,7 +16,7 @@ public class Board {
 
 	public Board() {
 		this(10, 10);
-		init();
+		//init();
 	}
 
 	// ================= Accesseurs et mutateurs ==============
@@ -36,6 +36,10 @@ public class Board {
 
 	public Case getCase(int x, int y) {
 		return tab[y][x];
+	}
+	
+	public void setCase(int x, int y, Case c ){
+		this.tab [y][x] = c ;
 	}
 
 	public Character getChar() {
@@ -185,20 +189,36 @@ public class Board {
 	}
 
 	public boolean win(){
+		int nbB=nbBox();
+		int ok=0;
 		for(int i=0; i<getHeight(); i++){
 			for (int j=0;j<getLength() ;j++ ) {
 				if(tab[i][j].getContent() instanceof Box && tab[i][j].getColor()=="red"){
-					return true;
+					ok++;
 				}
 				if(tab[i][j].getContent() instanceof Box && tab[i][j].getColor()=="green"){
-					return true;
+					ok++;
 				}
 				if(tab[i][j].getContent() instanceof Box && tab[i][j].getColor()=="blue"){
-					return true;
+					ok++;
 				}
 			}
 		}
+		if(ok==nbB){
+			return true;
+		}
 		return false;
+	}
+	public int nbBox(){
+		int res=0;
+		for(int i=0;i<getHeight();i++){
+			for(int j=0;j<getLength();j++){
+				if(tab[i][j].getContent() instanceof Box){
+					res++;
+				}
+			}
+		}
+		return res;
 	}
 	
 
@@ -206,7 +226,6 @@ public class Board {
 	// défaut
 
 	public void init() {
-
 		for (int i = 0; i < tab.length; i++) {
 			tab[i][0] = new Case(new Wall());
 			tab[i][tab.length - 1] = new Case(new Wall());

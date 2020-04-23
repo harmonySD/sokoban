@@ -20,7 +20,7 @@ Cases pouvant être codées en plusieurs caractères
 
 vient ensuite SEULEMENT pour les cases codés en plusieurs caractères si présent : 
 
-- les points de victoires de couleurs rouge,vert,bleu : "R","V","B"
+- les points de victoires de couleurs rouge,vert,bleu : "R","G","B"
 - Si un bonus est présent : "+" 
 
 vient ensuite TOUJOURS

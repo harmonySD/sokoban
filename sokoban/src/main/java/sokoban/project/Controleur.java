@@ -12,7 +12,7 @@ public class Controleur /*implements KeyListener */{
 	private Game modele;
 	public Controleur(GameVue g, String nom) {
 		this.vue=g;
-		this.modele=new Game(nom);
+		this.modele=new Game(nom);////
 		
 	}
 	public Game getModele() {
@@ -43,7 +43,7 @@ public class Controleur /*implements KeyListener */{
 			//System.exit(0);
 			vue.stopSoundPlease();
 			vue.dispose();
-			new YouWinVue(etoile*10);
+			new YouWinVue(modele.getPlayer().getNickname());
 		}
 	}
 }
