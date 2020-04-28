@@ -12,7 +12,7 @@ sokoban/project/Player.class
 sokoban/project/Content.class
 sokoban/project/Controleur.class
 sokoban/project/Box.class
-sokoban/project/YouWinVue.class
 sokoban/project/CaseVue.class
+sokoban/project/YouWinVue.class
 sokoban/project/Wall.class
 sokoban/project/MenuVue.class

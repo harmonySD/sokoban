@@ -15,8 +15,8 @@ public class Game {
 	}
 	public Game(String n) {
 		this(new Player(n), new Board());
-		level_loader("/target/niveautest.txt"); // ajoutez cette ligne pour texter la fonction de chargement 
-		
+		level_loader("niveautest.txt"); // ajoutez cette ligne pour texter la fonction de chargement  de NIVEAU 
+		//PlayerLoader("Profildetest.txt"); // ajoutez cette ligne pour tester la fonction de chargement de JOUEUR
 	}
 
 	// ===================== Getter & Setter ========================
@@ -26,9 +26,11 @@ public class Game {
 	public Board getBoard(){ return this.board; }
 	public void setBoard(Board b){ this.board=b; }
 	
-	void level_saver (String levelname ) {
+	
+	// ==================== level loader & saver ======================
+	void level_saver (String levelname ) { // ne doit PAS contenir .txt
 			try{
-			PrintWriter fichier = new PrintWriter(new FileWriter(levelname+".txt"));
+			PrintWriter fichier = new PrintWriter(new FileWriter(this.path+"/target/Niveaux/"+levelname+".txt"));
 			int brdlen = this.board.getLength();
 			int brdhei = this.board.getHeight();
 			fichier.print(brdlen+","+brdhei+";");
@@ -72,12 +74,10 @@ public class Game {
 		}catch (IOException e){};
 	}
 
+	boolean level_loader (String filename ){ // DOIT contenir .txt 
+		File test = new File(this.path+"/target/Niveaux/"+filename);
 
-
-	boolean level_loader (String filepath ){
-		File test = new File(this.path+filepath);
-
-		System.out.println("Tentative de chargement de niveau depuis " + this.path+filepath );
+		System.out.println("Tentative de chargement de niveau depuis " + this.path+"/target/Niveaux/"+filename );
 		if (!test.exists()){System.out.println(" Fichier à charger introuvable, arret");return false ; }
 		int nmur = 0;
 		int npers = 0;
@@ -88,7 +88,7 @@ public class Game {
 		int casw = 0; // nb cases écrits pour compter à la fin 
 		int lenw = 0;// nbl ligne réellement écrite pour test à la fin 
 		try{
-			Reader fichier = new FileReader(this.path+filepath);
+			Reader fichier = new FileReader(this.path+"/target/Niveaux/"+filename);
 			int data = ' '; // stockeur cractère par caractère 
 			String temp = null; // stockeur "case par case "
 			int len =  0;
@@ -160,8 +160,91 @@ public class Game {
 			System.out.println("JAVA IO EXCEPTION");
 			
 			}
-	System.out.println("Le chargement du fichier "+filepath+" a eu lieu avec succès ");
+	System.out.println("Le chargement du fichier "+filename+" a eu lieu avec succès ");
 	System.out.println("Ont été chargés : \nVides " +nvide+"\nMurs" +nmur+"\nPersonnage "+npers+ "\nCaisses "+nbox +"\nBonus "+nbo  +"\nPoints de victoires "  +nbpv);
 	return true ;
+	}
+	
+	// ==================== Player profile loader & saver ======================
+	public boolean PlayerSaver(String profilename){ // ne doit PAS contenir .txt 
+		try{
+			PrintWriter fichier = new PrintWriter(new FileWriter(this.path+"/target/Profils/" +profilename+".txt"));
+			fichier.print("PROFILESAVE \n");
+			fichier.print("NAME= "+ this.player.getNickname()+"\n");
+			fichier.print("SCORE= "+ this.player.getScore()+"\n" );
+			fichier.close();
+		}catch(IOException e ){
+			System.out.println("Sauvegarde du profil " +profilename+" échouée  Exception entrée sortie");
+			return false;
+		}
+		System.out.println("Sauvegarde du profil " +profilename+" réussie");
+		return true;
+	}
+
+	
+	public boolean PlayerSaver(){ // surdéfintion de player Saver
+		return PlayerSaver(this.player.getNickname());
+	}
+	
+	public boolean PlayerLoader(String filename){ // filename DOIT contenir ".txt "
+		File test = new File(this.path+"/target/Profils/"+filename);
+		System.out.println("Tentative de chargement de niveau depuis " + this.path+"/target/Profils/"+filename );
+		if (!test.exists()){System.out.println(" Fichier de profil à  charger introuvable, arret");return false;}
+		String fcheck = new String(); // pour vérifier que le format de sauvegarde est correct
+		int data = 0;
+		try{
+			Reader fichier = new FileReader(this.path +"/target/Profils/"+filename);
+			for(int i =0;i<19;i++){ // 19 est la longueur de  "PROFILESAVE \nNAME= " /!\ attention à l'espace !
+				data = fichier.read();
+				if(data ==-1){fichier.close(); System.out.println("Le fichier de profil  chargé est corrompu, arrêt 1 "); return false;}
+				fcheck += (char)data;
+			}
+			if (0 !="PROFILESAVE \nNAME= ".compareTo(fcheck)){ // il est attendu que le fichier de profil comporte au début ceci
+				fichier.close();
+				System.out.println("PROFILESAVE \nNAME= ".compareTo(fcheck) + fcheck);
+				System.out.println("Le fichier chargé n'est pas celui d'un profil, arrêt  ");
+				return false;
+			}
+			fcheck = new String();
+			String sname = new String();
+			String sscore = new String();
+			while((char)data != '\n'){
+				data = fichier.read();
+				if(data ==-1){fichier.close(); System.out.println("Le fichier de profil  chargé est corrompu, fichier incomplet "); return false;}
+				sname += (char)data;
+			}
+			
+			Player stockp = new Player(sname.substring(0,sscore.length() -1));// substring  car le \n à la fin a été aussi recopié !
+			fcheck = new String();
+			for(int i =0;i<7;i++){ // 6 est la longueur de "SCORE= "/!\ attention à l'espace !
+				data = fichier.read();
+				if(data ==-1){fichier.close(); System.out.println("Le fichier de profil  chargé est corrompu, fichier incomplet "); return false;}
+				fcheck+= (char)data;
+			}
+			
+			if (0 !="SCORE= ".compareTo( fcheck)){ // la suite de ce à quoi doit ressembler le fichier après le pseudo et le \n
+				fichier.close();
+				System.out.println("Le fichier de profil  chargé est corrompu, arrêt  4");
+				return false;
+			}
+			while((char)data != '\n'){
+				data = fichier.read();
+				if(data ==-1){fichier.close(); System.out.println("Le fichier de profil  chargé est corrompu, arrêt lors de la lecture du score "); return false;}
+				sscore += (char)data;
+			}
+			try{ stockp.setScore( Integer.parseInt(sscore.substring(0,sscore.length() -1))); // car le caractère \n à la fin a été lu, il faut le retirer 
+			
+			}catch(NumberFormatException nfe){
+
+				System.out.println(" Erreur dans la lecture du score : NumberFormatException");
+			   return false ;
+			}
+			fichier.close();
+			this.player = stockp;
+		}catch(IOException e){System.out.println("Erreur d'entrée sortie  lors de la lecture ");
+			return false;
+		}
+		
+		return true;
 	}
 }
