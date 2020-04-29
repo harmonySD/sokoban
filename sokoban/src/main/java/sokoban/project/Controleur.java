@@ -43,7 +43,7 @@ public class Controleur /*implements KeyListener */{
 			//System.exit(0);
 			vue.stopSoundPlease();
 			vue.dispose();
-			new YouWinVue(modele.getPlayer().getNickname());
+			new YouWinVue(modele.getPlayer().getNickname(),etoile*10);
 		}
 	}
 }
