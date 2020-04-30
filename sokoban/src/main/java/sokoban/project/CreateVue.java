@@ -167,15 +167,15 @@ public class CreateVue extends JFrame implements MouseListener{
         BufferedImage noneImg = null;
 
         try {
-            characterImg = ImageIO.read(new File(path+"Character.bmp"));
-            wallImg = ImageIO.read(new File(path+"Wall.bmp"));
-            redBoxImg = ImageIO.read(new File(path+"Box_R.bmp"));
-            redGoalImg = ImageIO.read(new File(path+"Objective_R.bmp"));
-            blueBoxImg = ImageIO.read(new File(path+"Box_B.bmp"));
-            blueGoalImg = ImageIO.read(new File(path+"Objective_B.bmp"));
-            greenBoxImg = ImageIO.read(new File(path+"Box_G.bmp"));
-            greenGoalImg = ImageIO.read(new File(path+"Objective_G.bmp"));
-            gumImg = ImageIO.read(new File(path+"Gomme.jpg"));
+            characterImg = ImageIO.read(new File(path+"Character.png"));
+            wallImg = ImageIO.read(new File(path+"Wall.png"));
+            redBoxImg = ImageIO.read(new File(path+"Box_R.png"));
+            redGoalImg = ImageIO.read(new File(path+"Objective_R.png"));
+            blueBoxImg = ImageIO.read(new File(path+"Box_B.png"));
+            blueGoalImg = ImageIO.read(new File(path+"Objective_B.png"));
+            greenBoxImg = ImageIO.read(new File(path+"Box_G.png"));
+            greenGoalImg = ImageIO.read(new File(path+"Objective_G.png"));
+            gumImg = ImageIO.read(new File(path+"Gomme.png"));
             trashImg = ImageIO.read(new File(path+"Trash.png"));
             doneImg = ImageIO.read(new File(path+"Done.png"));
             noneImg = ImageIO.read(new File(path+"Vide.png"));
@@ -360,7 +360,7 @@ public class CreateVue extends JFrame implements MouseListener{
                        }
                     }
                 }
-                // Créer une game à partir de celle produite par le User
+                // Créer une game à partir de celle produite par le User 364
                 Game newGame = new Game(new Player(this.nom), this.board.getBoard());
             }
             this.update();
@@ -532,9 +532,10 @@ public class CreateVue extends JFrame implements MouseListener{
         if(chara != 1) { text.setText("Un unique personnage !"); }
         else if(redB + blueB + greenB <= 0) { text.setText("Il n'y a pas de boxs !"); }
         else if(redG + greenG + blueG <= 0) { text.setText("Il n'y a pas d'objectifs !"); }
-        else if(nombre == 0 || nombre > 100) { text.setText("Nombre de coups incorrect"); }
+        else if(nombre == 0 || nombre > 100) { text.setText("Nombre de coups incohérent"); }
         // Les conditions sont donc toutes respectées :
-        else if(redB == redG && blueB == blueG && greenB == greenG){ return true; }
+        else if(redB == redG && blueB == blueG && greenB == greenG) { return true; }
+        else { text.setText("Niveau non conforme"); }
         // Sinon FALSE
         return false;
     }
