@@ -42,7 +42,9 @@ public class CaseVue extends JPanel {
 	}
 	//using colors as placeholders for textures
 	public void update() {
-		if(this.c== null)System.out.println("la case est nulle"); ////
+		if(c.getContent() == null) {
+			System.out.println("la case est nulle");
+		}
 		if(c.getContent() instanceof Empty) {
 			try {
 				switch(c.getColor()) {// check if works with loaded maps
@@ -54,6 +56,9 @@ public class CaseVue extends JPanel {
 						break;
 					case("blue") : 
 						fg=ImageIO.read(new File(path+"Objective_B.bmp"));
+						break;
+					case("none") : // Necessaire pour les cases vides dans CreateVue !
+						fg=ImageIO.read(new File(path+"None.jpg"));
 						break;
 						default:
 							fg=ImageIO.read(new File(path+"Ground.bmp"));
