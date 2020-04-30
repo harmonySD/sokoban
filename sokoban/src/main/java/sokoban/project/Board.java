@@ -16,7 +16,7 @@ public class Board {
 
 	public Board() {
 		this(10, 10);
-		//init();
+		init();
 	}
 
 	// ================= Accesseurs et mutateurs ==============
@@ -225,22 +225,37 @@ public class Board {
 	// Ce init est là pour faire des test ou bien pour définir une configuration par
 	// défaut
 
+//	public void init() {
+//		for (int i = 0; i < tab.length; i++) {
+//			tab[i][0] = new Case(new Wall());
+//			tab[i][tab.length - 1] = new Case(new Wall());
+//			if (i == 0 || i == tab.length - 1) {
+//				for (int j = 1; j < tab[i].length - 1; j++)
+//					tab[i][j] = new Case(new Wall());
+//			} else {
+//				for (int j = 1; j < tab[i].length - 1; j++)
+//					tab[i][j] = new Case(new Empty());
+//			}
+//		}
+//		ch.setX(7);
+//		ch.setY(2);
+//		tab[2][7].setChar(true);
+//		tab[2][2].setContent(new Box("red"));
+//		tab[4][5].setColor("red");
+//	}
+
+	// Un Board complétement vierge
 	public void init() {
-		for (int i = 0; i < tab.length; i++) {
+		for(int i = 0; i < tab.length; i++) {
 			tab[i][0] = new Case(new Wall());
 			tab[i][tab.length - 1] = new Case(new Wall());
 			if (i == 0 || i == tab.length - 1) {
 				for (int j = 1; j < tab[i].length - 1; j++)
-					tab[i][j] = new Case(new Wall());
+					tab[i][j] = new Case("n", new Wall(), false);
 			} else {
 				for (int j = 1; j < tab[i].length - 1; j++)
-					tab[i][j] = new Case(new Empty());
+					tab[i][j] = new Case("n", new Empty(), false);
 			}
 		}
-		ch.setX(7);
-		ch.setY(2);
-		tab[2][7].setChar(true);
-		tab[2][2].setContent(new Box("red"));
-		tab[4][5].setColor("red");
 	}
 }

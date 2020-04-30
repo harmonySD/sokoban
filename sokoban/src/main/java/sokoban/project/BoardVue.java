@@ -6,7 +6,9 @@ import javax.swing.JPanel;
 
 public class BoardVue extends JPanel {
 	int len;
+	private Board b;
 	public BoardVue(Board b) {////
+		this.b = b;
 		len=b.getLength();
 		this.setLayout(new GridLayout(b.getHeight(),len));
 		for(int i=0;i<b.getHeight();i++) {
@@ -15,6 +17,8 @@ public class BoardVue extends JPanel {
 			}
 		}
 	}
+
+	public Board getBoard() { return this.b; }
 	public CaseVue getCase(int i, int j) {
 		
 		return (CaseVue)((JPanel)this.getComponents()[i*len+j]);
