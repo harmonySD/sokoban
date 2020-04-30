@@ -34,8 +34,10 @@ public class Controleur /*implements KeyListener */{
 
 		if(modele.getBoard().win()){
 			int nb_coup = this.getModele().getBoard().getCoup();
-			int etoile = (nb_coup < 10) ? 3 : (nb_coup < 20) ? 2 : 1 ;
-			System.out.println("GAGNE. VOUS ETES A " + etoile + " ETOILES !");
+			int m2s = this.getModele().getBoard().get_max2stars();
+			int m3s = this.getModele().getBoard().get_max3stars();
+			int etoile = (nb_coup <m3s) ? 3 : (nb_coup < m2s) ? 2 : 1 ;
+			System.out.println("GAGNE. VOUS ETES A " + etoile + " ETOILES  POUR CE NIVEAU ! ");
 			this.getModele().getPlayer().setScore(this.getModele().getPlayer().getScore() + etoile * 10);
 
 

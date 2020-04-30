@@ -16,6 +16,7 @@ public class Game {
 	public Game(String n) {
 		this(new Player(n), new Board());
 		level_loader("niveautest.txt"); // ajoutez cette ligne pour texter la fonction de chargement  de NIVEAU 
+		level_saver("niveautest2");
 		//PlayerLoader("Profildetest.txt"); // ajoutez cette ligne pour tester la fonction de chargement de JOUEUR
 	}
 
@@ -58,20 +59,24 @@ public class Game {
 						else{
 							fichier.print("E");
 						}
-					}
-					if(! (board.getCase(i,j).getContent() instanceof Empty || board.getCase(i,j).getContent() instanceof Box || board.getCase(i,j).getContent() instanceof Wall  ) )	{fichier.print("N,"); // il faudra l'améliorer pour l'optimiser, mais je ne vois pour l'instant comment éviter ces tests redondants (si on est sur une case VOID qui ne peut rien contenir)
-		continue ;}		if(board.getCase(i,j).getColor().equals("red") ){fichier.print("R");}
+					}// il faudra l'améliorer pour l'optimiser, mais je ne vois pour l'instant comment éviter ces tests redondants (si on est sur une case VOID qui ne peut rien contenir)
+					if(! (board.getCase(i,j).getContent() instanceof Empty || board.getCase(i,j).getContent() instanceof Box || board.getCase(i,j).getContent() instanceof Wall  ) ){
+						fichier.print("N,"); // peut se traduire par if ! content ??
+						continue ;
+					}		
+					if(board.getCase(i,j).getColor().equals("red") ){fichier.print("R");}
 					else if(board.getCase(i,j).getColor().equals("green") ) { fichier.print("G");}
 					else if(board.getCase(i,j).getColor().equals("blue") ) { fichier.print("B");}
 					if (board.getCase(i,j).getBonus() ){fichier.print("+");}
 					fichier.print(",");
 				}	
-			// choisi de faire une fonction d'objet et pas de classe 
-			// car on ne devrait pas avoir plusieurs objets  game ?
 			} 
 			fichier.print(";");
+			//
+			fichier.print(board.get_max3stars()+","+board.get_max2stars()+";");
 		fichier.close();
 		}catch (IOException e){};
+		System.out.println("sauvegarde réussi du fichier "+levelname+".txt");
 	}
 
 	boolean level_loader (String filename ){ // DOIT contenir .txt 
@@ -153,16 +158,46 @@ public class Game {
 						}while ((char)data != ',' && data !=-1);
 					}System.out.println("Ligne  "+(i+1)+"/"+hei+" chargée "); 
 			}
-			fichier.close();
-			if(lenw != len  || casw != hei*len ){System.out.println("Erreur, le fichier est peut être corrompu, nombre de case écrit différent de celui attendu :  len attendu  "+ len+" vs obtenu "+lenw +" nb total écriture  attendu "+ hei*len +" vs obtenu "+casw );return false ;}
-			this.board = borstock;
+			if(lenw != len  || casw != hei*len ){System.out.println("Erreur, le fichier est peut être corrompu, nombre de case écrit différent de celui attendu :  len attendu  "+ len+" vs obtenu "+lenw +" nb total écriture  attendu "+ hei*len +" vs obtenu "+casw );
+				fichier.close();
+				return false ;
+			}
+			while(data !=';' && data !=-1) { data = fichier.read(); } // il y a un ';' après les données de niveau et avant les données de score à faire  
+				String sm3s = new String();// pour stocker les string obtenus avant parsage 
+				String sm2s = new String();
+				
+				while (data !=','&& data !=-1){ 
+					data = fichier.read();
+					if((char)data ==',') break;// une virgule sépare le score pour 3 étoiles de celui  du deuxième
+					sm3s+= (char)data;
+				}
+				
+				while (data !=';'&& data !=-1){ // un point virgule clotûrle le fichier 
+					data = fichier.read();
+					if((char)data ==';') break;
+					sm2s+= (char)data;
+				}
+				int m3s;
+				int m2s;
+				try{
+				m3s = Integer.parseInt(sm3s);
+				m2s  = Integer.parseInt(sm2s);  
+				}
+				catch (NumberFormatException e){
+					System.out.println("NumberFormatException, nombre de coups");
+				   return false ;
+				}
+				borstock.set_max3stars(m3s);
+				borstock.set_max2stars(m2s);
+				fichier.close();
+				this.board = borstock;
 		}catch (java.io.IOException  e ){
 			System.out.println("JAVA IO EXCEPTION");
-			
-			}
-	System.out.println("Le chargement du fichier "+filename+" a eu lieu avec succès ");
-	System.out.println("Ont été chargés : \nVides " +nvide+"\nMurs" +nmur+"\nPersonnage "+npers+ "\nCaisses "+nbox +"\nBonus "+nbo  +"\nPoints de victoires "  +nbpv);
-	return true ;
+		}
+		System.out.println("Le chargement du fichier "+filename+" a eu lieu avec succès ");
+		System.out.println("Ont été chargés : \nVides " +nvide+"\nMurs" +nmur+"\nPersonnage "+npers+ "\nCaisses "+nbox +"\nBonus "+nbo  +"\nPoints de victoires "  +nbpv );
+		System.out.println("nombre de déplacement max pour obtenir 3 étoiles : "+this.board.get_max3stars() +" pour deux étoiles  : "+this.board.get_max2stars()  );
+		return true ;
 	}
 	
 	// ==================== Player profile loader & saver ======================
