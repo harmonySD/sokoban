@@ -6,8 +6,16 @@ public class Board {
 	private Case[][] tab;
 	private Character ch;
 	private int nb_coup;
+	private int max3stars;
+	private int max2stars;
 
 	// =================Constructeurs =========================
+	public Board(int szx, int szy,int max3s,int max2s) {
+		this(szx,szy);
+		this.max2stars = max2s ;
+		this.max3stars = max3s ;
+	}
+	
 	public Board(int szx, int szy) {
 		this.tab = new Case[szx][szy];
 		ch = new Character(0, 0);
@@ -16,6 +24,8 @@ public class Board {
 
 	public Board() {
 		this(10, 10);
+		this.max2stars = 14;
+		this.max3stars =7;
 		//init();
 	}
 
@@ -31,7 +41,13 @@ public class Board {
 	public int getCoup() { return this.nb_coup; }
 
 	public void setCoup(int i) { this.nb_coup = i; }
-
+	
+	int get_max3stars(){return this.max3stars;}
+	int get_max2stars(){return this.max2stars;}
+	
+	void set_max3stars(int nmax){this.max3stars = nmax;}
+	void set_max2stars(int nmax){ this.max2stars = nmax;}
+	
 	public void incrementeCoup() { this.setCoup(this.getCoup() + 1); }
 
 	public Case getCase(int x, int y) {
