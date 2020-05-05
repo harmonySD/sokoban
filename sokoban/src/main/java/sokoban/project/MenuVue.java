@@ -24,12 +24,14 @@ import java.io.IOException;
 
 public class MenuVue extends JFrame implements ActionListener{
 	private GameVue fenb1;
+	private CreateVue fenb4;
 	//private SelectVue fenb2;
 	//private OptionVue fenb3;
 	private JPanel pan= new FondVue(); // pour avoir l'image de fond 
 	private JButton b1= new JButton("Start");
 	private JButton b2= new JButton("Select Level");
 	private JButton b3= new JButton("Option");
+	private JButton b4= new JButton("Create your level");
 	private String nom;
 	private String path;
 
@@ -41,10 +43,13 @@ public class MenuVue extends JFrame implements ActionListener{
 		this.setTitle ("Sokoban");
 		this.setSize(1000,1000);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
-		b1.setBounds(100,150,300,100);
-		pan.add(b1);
+		//b1.setBounds(100,150,300,100);
+		//pan.add(b1);
+		b4.setBounds(100,150,300,100);
+		pan.add(b4);
 		setContentPane(pan);
-		b1.addActionListener(this);
+		//b1.addActionListener(this);
+		b4.addActionListener(this);
 
 		//b2.setBounds(100,150,300,100);
 		//pan.add(b2);
@@ -59,7 +64,8 @@ public class MenuVue extends JFrame implements ActionListener{
 	//En premier on "ferme" cette fenetre
 	//si l'utilisateur clique sur le bouton Start -> rediriger vers une fenetre de jeu 
 	//si l'utilisatuer clique sur le bouton Select level-> rediriger vers une fenetre pour choix de niveau 
-	//si l'utilisateur clique sue le bouton Option -> rediriger vers une fenetr epour choisir profil etc 
+	//si l'utilisateur clique sue le bouton Option -> rediriger vers une fenetre pour choisir profil etc
+	//si l'utilisateur clique sue le bouton Create your level -> rediriger vers une fenetre pour créer son niveau
 	public void actionPerformed(ActionEvent arg0){
 		this.dispose();
 		if(arg0.getSource()==b1){
@@ -70,6 +76,9 @@ public class MenuVue extends JFrame implements ActionListener{
 		}
 		else if (arg0.getSource() ==b3){
 			//fenb3= new OptionVue();
+		}
+		else if (arg0.getSource() ==b4){
+			fenb4= new CreateVue(nom);
 		}
 	}
 

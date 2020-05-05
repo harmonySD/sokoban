@@ -7,7 +7,9 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import java.awt.Dimension;
 import javax.swing.JPanel;
+import javax.swing.JButton;
 
 
 public class CaseVue extends JPanel {
@@ -16,7 +18,7 @@ public class CaseVue extends JPanel {
 	private BufferedImage fg;
 	private String path;
 	
-	public CaseVue(Case c) {////
+	public CaseVue(Case c) {
 		double rd = Math.random();
 		this.path=System.getProperty("user.dir")+"/Textures/";
 		try {
@@ -28,6 +30,10 @@ public class CaseVue extends JPanel {
 		this.c=c;
 		this.setVisible(true);
 	}
+
+	public void setCase(Case maCase) { this.c = maCase; }
+
+	public BufferedImage getFG() { return this.fg; }
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -36,7 +42,9 @@ public class CaseVue extends JPanel {
 	}
 	//using colors as placeholders for textures
 	public void update() {
-		if(this.c== null)System.out.println("lacase est nulle "); //// 
+		if(c.getContent() == null) {
+			System.out.println("la case est nulle");
+		}
 		if(c.getContent() instanceof Empty) {
 			try {
 				switch(c.getColor()) {// check if works with loaded maps
@@ -49,8 +57,11 @@ public class CaseVue extends JPanel {
 					case("blue") : 
 						fg=ImageIO.read(new File(path+"Objective_B.bmp"));
 						break;
+					case("none") : // Necessaire pour les cases vides dans CreateVue !
+						fg=ImageIO.read(new File(path+"None.jpg"));
+						break;
 						default:
-							fg=null;
+							fg=ImageIO.read(new File(path+"Ground.bmp"));
 							break;
 				}
 			}
