@@ -26,7 +26,7 @@ public class Board {
 		this(10, 10);
 		this.max2stars = 14;
 		this.max3stars =7;
-		//init();
+		init();
 
 	}
 
