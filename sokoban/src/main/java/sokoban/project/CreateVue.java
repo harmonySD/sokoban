@@ -363,8 +363,8 @@ public class CreateVue extends JFrame implements MouseListener{
                 // Créer une game à partir de celle produite par le User 364
                 Game newGame = new Game(new Player(this.nom), this.board.getBoard()); //je pense que "new " player va sauter dans l'implémentation finale 
 				// peut être l'ajouter au constructeur par la suite ? 
-				String stock;// enlève ce string ou fait  ce qu'il faut pour que le nom qu'aura le niveau SANS .txt arrive à level_saver 
-				newGame.level_saver(stock);// 
+				//String stock;// enlève ce string ou fait  ce qu'il faut pour que le nom qu'aura le niveau SANS .txt arrive à level_saver 
+				//newGame.level_saver(stock);// 
             }
             this.update();
             selected = 0;
