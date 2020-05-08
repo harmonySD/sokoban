@@ -18,8 +18,8 @@ public class GameVue extends JFrame implements KeyListener {
 	public Audio son =new Audio();
 	private YouWinVue fen1; 
 	public Controleur ctrl;///
-	public GameVue(String nom) {
-		ctrl=new Controleur(this, nom);////
+	public GameVue(String nom, String leveln) {
+		ctrl=new Controleur(this, nom,leveln);////
 		init();
 	}
 	public void init() {
