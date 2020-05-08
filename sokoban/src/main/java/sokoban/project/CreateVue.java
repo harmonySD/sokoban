@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.BorderFactory;
+import java.lang.Math;
 
 
 import java.awt.Color;
@@ -72,7 +73,10 @@ public class CreateVue extends JFrame implements MouseListener{
     private MenuVue fenMenu;
     private int selected; // 0
     private BoardVue board;
+    // Le nom du player
     private String nom;
+    // Le nom de la game
+    private String nameGame;
     private String path;
     private boolean charSet;
     // Les différents boutons
@@ -90,7 +94,9 @@ public class CreateVue extends JFrame implements MouseListener{
     private JButton noneCase; // 11
     private JButton text;
     private JButton quit;
+    // Les champs nombre de coup et nom de game
     private JTextField nbCoup;
+    private JTextField name;
 
     public CreateVue(String nom) {
         this.nom = nom;
@@ -105,16 +111,16 @@ public class CreateVue extends JFrame implements MouseListener{
         // ========= Grille gauche et droite de la fenetre
 
         // === Coté gauche, partie jeu
-        JPanel left = new JPanel(); left.setPreferredSize(new Dimension(1000, 1000));
+        JPanel left = new JPanel(); left.setPreferredSize(new Dimension(800, 800));
         // La grille de jeu
         BoardVue board = new BoardVue(new Board());
-        board.setPreferredSize(new Dimension(1000, 850));
+        board.setPreferredSize(new Dimension(800, 650));
         this.board = board;
         left.add(board);
         // Le dessous de grille composé d'un champ nombre de coup
         // D'un bouton quitter et d'un suivi (niveau conforme, etc)
-        JPanel dessous = new JPanel(); dessous.setPreferredSize(new Dimension(1000, 100));
-        dessous.setLayout(new GridLayout(1, 3));
+        JPanel dessous = new JPanel(); dessous.setPreferredSize(new Dimension(800, 100));
+        dessous.setLayout(new GridLayout(1, 4));
         // Le JButton suivi
         JButton text = new JButton("En construction...");
         text.setPreferredSize(new Dimension(300, 100));
@@ -134,6 +140,19 @@ public class CreateVue extends JFrame implements MouseListener{
         container.add(nbCoup);
         dessous.add(container);
         this.nbCoup = nbCoup;
+        // Le champ nom de game
+        JPanel container2 = new JPanel();
+        container2.setPreferredSize(new Dimension(300, 100));
+        JTextField nameGame = new JTextField("Level" + (100 + (int)(Math.random() * ((999 - 100) + 1))));
+        nameGame.setPreferredSize(new Dimension(100, 100));
+        // Avec une jolie Font !
+        nameGame.setFont(font); nameGame.setHorizontalAlignment(JTextField.CENTER);
+        container2.setBackground(Color.white);
+        container2.setLayout(new BorderLayout());
+        nameGame.setForeground(Color.BLUE);
+        container2.add(nameGame);
+        dessous.add(container2);
+        this.name = nameGame;
         // Un bouton quitter
         JButton quit = new JButton("Quitter"); quit.addMouseListener(this);
         quit.setBackground(Color.RED); quit.setForeground(Color.WHITE); quit.setFont(font);
@@ -148,7 +167,7 @@ public class CreateVue extends JFrame implements MouseListener{
         left.add(dessous);
 
         // === Coté droit, partie boutons
-        JPanel right = new JPanel(); right.setPreferredSize(new Dimension(400, 1000));
+        JPanel right = new JPanel(); right.setPreferredSize(new Dimension(400, 800));
         // Six lignes sur deux colonnes
         right.setLayout(new GridLayout(6, 2));
 
@@ -245,7 +264,7 @@ public class CreateVue extends JFrame implements MouseListener{
         this.update();
         this.add(panel);
         this.setVisible(true);
-        this.setSize(1400,1000);
+        this.setSize(1200,800);
     }
 
     // Metre à jour la grille de jeu
@@ -261,7 +280,6 @@ public class CreateVue extends JFrame implements MouseListener{
 
     // A l'écoute des evenements clicks
     public void mouseClicked(MouseEvent arg0){
-        System.out.println("Clicked !");
         // Si click sur bouton personnage
         if(arg0.getSource() == character){
             selected = 1;
@@ -348,7 +366,7 @@ public class CreateVue extends JFrame implements MouseListener{
             if(!this.isItFinish()) {
                 text.setBorder(BorderFactory.createLineBorder(Color.red, 5));
             } else {
-                text.setText("Niveau conforme");
+                text.setText("Niveau conforme"); this.nameGame = name.getText();
                 text.setBorder(BorderFactory.createLineBorder(Color.green, 5));
                 // Remetre les cases none dans la bonne forme
                 for(int i=0; i < this.board.getBoard().getHeight(); i++) {
@@ -362,9 +380,7 @@ public class CreateVue extends JFrame implements MouseListener{
                 }
                 // Créer une game à partir de celle produite par le User 364
                 Game newGame = new Game(new Player(this.nom), this.board.getBoard()); //je pense que "new " player va sauter dans l'implémentation finale 
-				// peut être l'ajouter au constructeur par la suite ? 
-				String stock;// enlève ce string ou fait  ce qu'il faut pour que le nom qu'aura le niveau SANS .txt arrive à level_saver 
-				newGame.level_saver(stock);// 
+
             }
             this.update();
             selected = 0;
@@ -382,7 +398,6 @@ public class CreateVue extends JFrame implements MouseListener{
             for(int j = 0; j < this.board.getBoard().getLength(); j++) {
                 // Si la case est trouvée et que selected contient une action
                 if(arg0.getSource() == this.board.getCase(i, j) && selected != 0) {
-                    System.out.println(i + " - " + j);
                     switch(selected) {
                         case 1: // Placer le personnage
                             if(!charSet) { // Si le personnage n'est pas déjà sur la grille
@@ -396,7 +411,6 @@ public class CreateVue extends JFrame implements MouseListener{
                             noBorder();
                             break;
                         case 2: // Placer un mur
-                            System.out.println("Le mur !");
                             Case mur = new Case(new Wall());
                             this.board.getBoard().setCase(i, j, mur);
                             this.board.getCase(i, j).setCase(mur);
@@ -416,7 +430,6 @@ public class CreateVue extends JFrame implements MouseListener{
                             selected = 0;
                             break;
                         case 5: // Placer une box bleu
-                            System.out.println("Box bleu !!");
                             Case boite2 = new Case("n", new Box("blue"), false);
                             this.board.getBoard().setCase(i, j, boite2);
                             this.board.getCase(i, j).setCase(boite2);
@@ -457,7 +470,6 @@ public class CreateVue extends JFrame implements MouseListener{
                             this.board.getCase(i, j).setCase(vide);
                             break;
                         default: // Cas par défaut, au cas ou
-                            System.out.println("Dechet");
                     }
                 }
             }
@@ -531,11 +543,13 @@ public class CreateVue extends JFrame implements MouseListener{
         // S'il y a un unique personnage
         // S'il y a autant de boxs d'une couleur que d'objectifs de cette même couleur
         // S'il y a au moins un duo box / objectif
-        // Enfin, si le nombre de coup renseigné est bon => TRUE
+        // Si le nombre de coup renseigné est bon
+        // Enfin, si le nom de la gem est correct => TRUE
         if(chara != 1) { text.setText("Un unique personnage !"); }
         else if(redB + blueB + greenB <= 0) { text.setText("Il n'y a pas de boxs !"); }
         else if(redG + greenG + blueG <= 0) { text.setText("Il n'y a pas d'objectifs !"); }
         else if(nombre == 0 || nombre > 100) { text.setText("Nombre de coups incohérent"); }
+        else if(name.getText().equals("")) { text.setText("Nom de game incorrect"); }
         // Les conditions sont donc toutes respectées :
         else if(redB == redG && blueB == blueG && greenB == greenG) { return true; }
         else { text.setText("Niveau non conforme"); }
