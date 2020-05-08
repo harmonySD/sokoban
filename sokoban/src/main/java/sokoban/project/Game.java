@@ -13,10 +13,10 @@ public class Game {
 		this.board=b;
 		this.path=System.getProperty("user.dir");// sera appelé dans les deux cas 
 	}
-	public Game(String n) {
+	public Game(String n,String leveln) {
 		this(new Player(n), new Board());
-		level_loader("niveautest.txt"); // ajoutez cette ligne pour texter la fonction de chargement  de NIVEAU 
-		level_saver("niveautest2");
+		level_loader(leveln); // ajoutez cette ligne pour texter la fonction de chargement  de NIVEAU 
+		//level_saver("niveautest2");
 		//PlayerLoader("Profildetest.txt"); // ajoutez cette ligne pour tester la fonction de chargement de JOUEUR
 	}
 
