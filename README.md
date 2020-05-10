@@ -1,4 +1,7 @@
+=============================================================================================================================================
 -----------------------------------------------------------SYSTEME DE SAUVEGARDE-------------------------------------------------------------
+=============================================================================================================================================
+
 
 Fonctionnement : chaque case sera séparée par une virgule;
 Toutes les données seront écrites en  une seule ligne et le système de chargement se chargera de compter les cases pour changer le y. 
@@ -42,11 +45,18 @@ W   r+ E  E   W
 W   PB E  E   W 
 W   W  W  W   W 
 
------------------------------------------------------------EDITEUR DE NIVEAU-------------------------------------------------------------
+
+
+=============================================================================================================================================
+-------------------------------------------------------------EDITEUR DE NIVEAU---------------------------------------------------------------
+=============================================================================================================================================
+
+
 
 L'utilisateur a la possibilité de réaliser de lui-même des niveaux sokobans (sauvegardable). Ceci, grâce à l'éditeur de niveau.
 
 Fonctionnement général :
+
     Celui-ci se compose d'une JFRAME divisé en deux panels, Left et Right. 
     Left possède la grille de jeu ainsi que divers champs et boutons en dessous tel que "Quitter", un champ Nombre de coup et un champ Nom de level. 
     
@@ -65,6 +75,7 @@ Fonctionnement général :
         - Le bouton "Done" lance la vérification de l'état du niveau. Le panel de vérification en LEFT traduira le résultat de cett vérification.
     
 Initialisation :
+
     La création d'un CREATEVUE lance la fonction init responsable du visuel de l'éditeur de partie. Celui-ci construit la JFRAME de tel façon à créer les différents boutons, au bon design, et mis à l'écoute par le MouseListener.
     Le JFRAME est composé de deux panels LEFT et RIGHT, eux composé comme suit :
     
@@ -75,6 +86,7 @@ Initialisation :
     L'état de base correspond à un niveau vide d'objet, entouré d'une paroie de mur de chaque coté.
 
 Action utilisateur :
+
     Afin de garder en mémoire l'action demandé par l'utilisateur, un int selected a été crée. Sa valeur change selon un clique sur un bouton donné et prends la valeur de l'action vooulu.
     Lors du clique sur une case de la grille de jeu, on questionne la valeur de selected et applique l'action correspondant.
     De même, les valeurs des champs Nombre de coup et Nom de level sont également enregistré et gardée en mémoire selon les actions et modifications écrites du User.
@@ -88,6 +100,7 @@ Action utilisateur :
         - Chaque action appel la méthode update() afin que le visuel de notre JFRAME soit mis à jour.
 
 Vérification :
+
     Lors que le User souhaite finalisé son niveau, il clique sur le bouton "DONE" du pannel RIGHT. Par cette action, une validation est mise en oeuvre par la méthode isItFinish() afin de vérifier l'état du level créeé.
     Il y a de multiples conditions à cette validation :
     
