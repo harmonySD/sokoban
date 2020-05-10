@@ -1,59 +1,41 @@
-=
-SYSTEME DE SAUVEGARDE
+# **SYSTEME DE SAUVEGARDE**
 
+1. Fonctionnement : 
 
-Fonctionnement : chaque case sera séparée par une virgule;
-Toutes les données seront écrites en  une seule ligne et le système de chargement se chargera de compter les cases pour changer le y. 
-
-taille du board en x longueur y hauteur deux entiers collés séparés par une virgule
-après vient un point virgule
-
-Des caractères sont utilisés pour encoder l'information
-vient toujours l'un de ceux-là en premier :
-
-Cases codés en un seul caractère :
-- les murs : "W," et RIEN d'AUTRE ( la virgule indique qu'on passe directement à la case suivante) 
-- le VIDE  (bord de niveau/ impossible à atteindre) : "N," et RIEN D'AUTRE ( la virgule indique qu'on passe directement à la case suivante)
-
-Cases pouvant être codées en plusieurs caractères
-- point de réapparition du personnage/ le personnage : P (pourra être suivi de bonus ou point de victoire )
-- une case sans contenu (pas de boîte,de mur, ) : E (pourra être suivi de  bonus ou  point de victoire )
-- les boîtes de couleurs rouge,vert,bleu : "r","v","b" (pourra être suivi de bonus ou point de victoire  )
-
-vient ensuite SEULEMENT pour les cases codés en plusieurs caractères si présent : 
-
-- les points de victoires de couleurs rouge,vert,bleu : "R","G","B"
-- Si un bonus est présent : "+" 
-
-vient ensuite TOUJOURS
-","
-
-la fin de fichier est marquée par ";" (qui EST précédé d'une virgule)
-
-
-cela nous donne  pour un terrain de jeu 5x5 : avec un bonus sur la même case qu'une caisse rouge,
-et le joueur sur le point de victoire d'une caisse bleu : 
-
-5,5;W,W,W,W,W,W,ER,E,E,W,W,r+,E,E,W,W,E,E,E,W,W,PB,b,E,W,W,W,W,W,W,; 
-
-une "représentation" en jeu : 
-
-W   W  W  W   W 
-W   ER E  E   W 
-W   r+ E  E   W 
-W   PB E  E   W 
-W   W  W  W   W 
+    Afin de sauvegarder un niveau, celui-ci est traduit en fichier TXT basic suivant des régles d'écritures stricts permettant une traduction vers un Board adéquat lors du chargement de niveau.
+    
+    Le correspond au format comme suit (donné à titre d'exemple). Ceci correspond à un terrain de jeu 5x5, avec un bonus sur la même case qu'une caisse rouge et le joueur sur le point de victoire d'une caisse bleu :
+    
+        5,5;W,W,W,W,W,W,ER,E,E,W,W,r+,E,E,W,W,E,E,E,W,W,PB,b,E,W,W,W,W,W,W,;
+    
+    Voici les régles en question :
+    
+        - Le fichier TXT est composé d'une seule ligne traduisant chaque case et données liées au niveau.
+        - Chaque case est séparée par une virgule.
+        - Les deux premiers nombres correspondent à X et Y, les dimensions de la grille de jeu.
+        - La fin du fichier est marqué par un point virgule ';'.
+    
+    Les cases sont codées en un ou plusieurs caractères selon leur nature. 
+    
+    _**En un caractère**_ :
+    
+        - "W" traduit un mur.
+        - "N" traduit une case vide.
+        - "P" traduit la case d'apparition du personnage
+    
+    _**En plusieurs caractère**_ :
+    
+        - "R", "G", "B" traduit les points de victoires ou objetifs selon leur couleur.
+        - "r", "g", "b" traduit les cartons / boxs à bouger selon leur couleur.
 
 
 
-=
-EDITEUR DE NIVEAU
-
+# **EDITEUR DE NIVEAU**
 
 
 L'utilisateur a la possibilité de réaliser de lui-même des niveaux sokobans (sauvegardable). Ceci, grâce à l'éditeur de niveau.
 
-Fonctionnement général :
+1. Fonctionnement général :
 
     Celui-ci se compose d'une JFRAME divisé en deux panels, Left et Right. 
     Left possède la grille de jeu ainsi que divers champs et boutons en dessous tel que "Quitter", un champ Nombre de coup et un champ Nom de level. 
@@ -72,7 +54,7 @@ Fonctionnement général :
         - Le bouton Poubelle permet de "clear" toute la grille en la remettant à son état initial. Cela appel la méthode clear().
         - Le bouton "Done" lance la vérification de l'état du niveau. Le panel de vérification en LEFT traduira le résultat de cett vérification.
     
-Initialisation :
+2. Initialisation :
 
     La création d'un CREATEVUE lance la fonction init responsable du visuel de l'éditeur de partie. Celui-ci construit la JFRAME de tel façon à créer les différents boutons, au bon design, et mis à l'écoute par le MouseListener.
     Le JFRAME est composé de deux panels LEFT et RIGHT, eux composé comme suit :
@@ -83,7 +65,7 @@ Initialisation :
     
     L'état de base correspond à un niveau vide d'objet, entouré d'une paroie de mur de chaque coté.
 
-Action utilisateur :
+3. Action utilisateur :
 
     Afin de garder en mémoire l'action demandé par l'utilisateur, un int selected a été crée. Sa valeur change selon un clique sur un bouton donné et prends la valeur de l'action vooulu.
     Lors du clique sur une case de la grille de jeu, on questionne la valeur de selected et applique l'action correspondant.
@@ -97,7 +79,7 @@ Action utilisateur :
     
         - Chaque action appel la méthode update() afin que le visuel de notre JFRAME soit mis à jour.
 
-Vérification :
+4. Vérification :
 
     Lors que le User souhaite finalisé son niveau, il clique sur le bouton "DONE" du pannel RIGHT. Par cette action, une validation est mise en oeuvre par la méthode isItFinish() afin de vérifier l'état du level créeé.
     Il y a de multiples conditions à cette validation :
