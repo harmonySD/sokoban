@@ -3,6 +3,7 @@
     
     Il faudra se positionner dans le dossier sokoban ou se trouve le makefile. Puis a l'aide de la commande make compiler le programme.
     Cela vous donnera un lien, Voici comment l'utiliser avec une ligne de comande :
+
         - java -jar leliendonneparlemake
         
 2. Jouer :
