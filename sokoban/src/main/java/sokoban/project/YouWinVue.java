@@ -24,9 +24,7 @@ import java.awt.*;
 
 public class YouWinVue extends JFrame implements ActionListener{
 	private MenuVue fenb1;
-	//private SelectVue fenb2;
-	//private OptionVue fenb3;
-	//private JPanel pan= new FondVue(); // pour avoir l'image de fond 
+	private SelectVue fenb2;
 	private JButton b1= new JButton("Back to menu");
 	private JButton b2= new JButton("Select other Level");
 	private JLabel lab1= new JLabel();
@@ -35,7 +33,6 @@ public class YouWinVue extends JFrame implements ActionListener{
 	//creer une fenetre avec un fond et 3 boutons qui redirigeront vers une classe associée
 	public YouWinVue(String name, int score){
 		this.n=name;
-		//pan.setLayout(null);
 		lab1.setText("GAGNE ! Ton score est de : "+score);
 		lab1.setHorizontalAlignment(JLabel.CENTER);
 		this.setTitle ("Sokoban");
@@ -43,7 +40,6 @@ public class YouWinVue extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
 		b1.setBounds(100,150,300,100);
 		this.add(b1);
-		//setContentPane(pan);
 		b1.addActionListener(this);
 		lab1.setVerticalAlignment(SwingConstants.TOP);
 		lab1.setFont(new java.awt.Font("Arial", Font.ITALIC, 30));
@@ -53,12 +49,10 @@ public class YouWinVue extends JFrame implements ActionListener{
 		this.add(lab1);
 		
 
-		//b2.setBounds(100,150,300,100);
-		//pan.add(b2);
-		//b2.addActionListener(this);
-		//b3.setBounds(100,150,300,100);
-		//pan.add(b3);
-		//b3.addActionListener(this);
+		b2.setBounds(100,250,300,100);
+		this.add(b2);
+		b2.addActionListener(this);
+
 
 
 
@@ -78,7 +72,7 @@ public class YouWinVue extends JFrame implements ActionListener{
 			fenb1= new MenuVue(n);
 		}
 		else if(arg0.getSource()== b2){
-			//fenb2= new SelectVue();
+			fenb2= new SelectVue(n);
 		}
 	}
 
