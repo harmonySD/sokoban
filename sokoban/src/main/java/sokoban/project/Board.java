@@ -10,6 +10,11 @@ public class Board {
 	private int max2stars;
 
 	// =================Constructeurs =========================
+	public Board(int szx, int szy,int max3s) {
+		this(szx,szy,max3s,(int)Math.round(1.3*max3s));
+		
+	}
+	
 	public Board(int szx, int szy,int max3s,int max2s) {
 		this(szx,szy);
 		this.max2stars = max2s ;
