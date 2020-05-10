@@ -22,63 +22,59 @@ import java.io.IOException;
 
 import javax.swing.SwingConstants;
 import java.awt.*;
+import javax.swing.JList;
+import javax.swing.event.*;
 
-
-public class SelectVue extends JFrame implements ActionListener{
+public class SelectVue extends JFrame implements ListSelectionListener{/*ActionListener*/
 	private JButton [] button=new JButton[100000];
 	//private JButton b2= new JButton("ntest2");
 	private GameVue fenb1;
 	private String nom;
 	private File levelPath = new File(System.getProperty("user.dir")+"/target/Niveaux"); 
 	private String [] listeDeNiveaux = levelPath.list();
+	private JList liste;
 	int nbnivx=nbn(listeDeNiveaux);
+	private JLabel lab1= new JLabel();
+	private String n;
 
 	public int nbn(String []l){
 		int nbn=0;
 		File levelPath = new File(System.getProperty("user.dir")+"/target/Niveaux"); 
 		String [] listeDeNiveaux = levelPath.list();
+		/*
 		for(int i = 0; i < listeDeNiveaux.length;i++){
 			System.out.println(listeDeNiveaux[i]);
 			nbn++;
-		}
+		}*/
 		return nbn;
 	}
 	
 	public SelectVue(String n){
 		int nbniv=nbn(listeDeNiveaux);
 		this.nom=n;
-		this.setLayout(new GridLayout(nbniv,0,0,0));
-		for (int i=0; i<nbniv;i++ ) {
-			button[i]=new JButton(listeDeNiveaux[i]);
-			this.add(button[i]);
-
-			//button[i].addActionListener(this);
-		}
-
+		this.liste = new JList(listeDeNiveaux);
+		Container contenu = getContentPane();
+		contenu.setLayout(new FlowLayout());
+		contenu.add(liste);
+		liste.addListSelectionListener(this);
 		this.setTitle ("Sokoban select your level");
-		this.setSize(1000,1000);
+		this.setSize(480,360);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+	
+		lab1.setText("Cliquez sur un nom de fichier pour charger un niveau  ");
+		lab1.setHorizontalAlignment(JLabel.CENTER);
+		lab1.setVerticalAlignment(SwingConstants.BOTTOM);
+		lab1.setFont(new java.awt.Font("Arial", Font.ITALIC, 15));
+		lab1.setOpaque(true);
 
-		//b1.setBounds(100,150,300,100);
-		//this.add(b1);
-		//b1.addActionListener(this);
-
-		//b2.setBounds(100,250,300,100);
-		//this.add(b2);
-		//b2.addActionListener(this);
+		lab1.setForeground(Color.BLACK);
+		this.add(lab1);
 		this.setVisible(true);
 	}
-
-
-
-	public void actionPerformed(ActionEvent arg0){
+	public void valueChanged(ListSelectionEvent e){
+		if(e.getValueIsAdjusting()){return;}
 		this.dispose();
-		for (int i=0;i<listeDeNiveaux.length ;i++ ) {
-			if (arg0.getSource()==button[i]) {
-				fenb1= new GameVue(nom,listeDeNiveaux[i]);
-			}
-		}
-		
+		this.fenb1= new GameVue(nom,(String)liste.getSelectedValue());
 	}
 
 }
