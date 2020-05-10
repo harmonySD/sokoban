@@ -29,9 +29,10 @@ public class SelectVue extends JFrame implements ActionListener{
 	private JButton b2= new JButton("ntest2");
 	private GameVue fenb1;
 	private String nom;
-
-
-
+	//private File levelPath = new File(System.getProperty("user.dir")+"/target/Niveaux"); 
+	//String [] listeDeNiveaux = levelPath.list();
+	//for(int i = 0; i < listeDeNiveaux.length;i++)System.out.println(listeDeNiveaux[i]);
+	
 	public SelectVue(String n){
 		this.nom=n;
 		this.setLayout(null);
@@ -48,6 +49,9 @@ public class SelectVue extends JFrame implements ActionListener{
 		this.add(b2);
 		b2.addActionListener(this);
 		this.setVisible(true);
+	 File levelPath = new File(System.getProperty("user.dir")+"/target/Niveaux"); 
+	String [] listeDeNiveaux = levelPath.list();
+	for(int i = 0; i < listeDeNiveaux.length;i++)System.out.println(listeDeNiveaux[i]);
 	}
 
 
