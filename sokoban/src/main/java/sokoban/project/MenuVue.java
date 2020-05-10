@@ -39,24 +39,23 @@ public class MenuVue extends JFrame implements ActionListener{
 	//creer une fenetre avec un fond et 3 boutons qui redirigeront vers une classe associée
 	public MenuVue(String n){
 		this.nom=n;
-		pan.setLayout(null);
 		this.setTitle ("Sokoban");
 		this.setSize(1000,1000);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
 		b1.setBounds(100,150,300,100);
 		pan.add(b1);
-		b4.setBounds(100,250,300,100);
+		b4.setBounds(100,150,300,100);
 		pan.add(b4);
 		setContentPane(pan);
 		b1.addActionListener(this);
 		b4.addActionListener(this);
 
-		//b2.setBounds(100,350,300,100);
-		//pan.add(b2);
-		//b2.addActionListener(this);
-		//b3.setBounds(100,450,300,100);
-		//pan.add(b3);
-		//b3.addActionListener(this);
+		b2.setBounds(100,150,300,100);
+		pan.add(b2);
+		b2.addActionListener(this);
+		b3.setBounds(100,150,300,100);
+		pan.add(b3);
+		b3.addActionListener(this);
 		this.setVisible(true);
 	}
 
