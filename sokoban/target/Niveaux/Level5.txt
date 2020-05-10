@@ -1,0 +1,1 @@
+10,10;W,W,W,W,W,W,W,W,W,W,W,W,E,E,E,E,E,E,E,W,W,E,N,E,r,E,E,E,E,W,W,E,E,W,EB,E,E,E,E,W,W,E,E,E,N,E,E,E,E,W,W,E,E,E,E,b,g,E,E,W,W,E,E,E,E,E,N,E,E,W,W,E,E,E,E,E,ER,W,E,W,W,EG,E,E,E,E,E,E,P,W,W,W,W,W,W,W,W,W,W,W,;43,57;

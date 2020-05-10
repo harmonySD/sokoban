@@ -1,0 +1,1 @@
+10,10;W,W,W,W,W,W,W,W,W,W,W,E,E,E,E,E,E,E,E,W,W,E,E,E,E,E,E,E,E,W,W,E,E,E,E,E,E,E,E,W,W,E,E,E,E,E,E,E,E,W,W,W,W,W,W,E,E,E,E,W,W,E,E,P,W,E,E,ER,E,W,W,E,E,E,r,E,E,E,E,W,W,E,E,E,E,E,E,E,E,W,W,W,W,W,W,W,W,W,W,W,;7,9;
