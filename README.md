@@ -1,3 +1,19 @@
+# **UTILISATION DU PROGRAMME**
+1. Premier pas :
+    
+    Il faudra se positionner dans le dossier sokoban ou se trouve le makefile. Puis a l'aide de la commande make compiler le programme.
+    Cela vous donnera un lien, Voici comment l'utiliser avec une ligne de comande :
+        - java -jar leliendonneparlemake
+        
+2. Jouer :
+    Indiquer votre nom dans le terminal et le jeu se lancera. Vous pourrez ainsi commencer une partie, créér votre propre niveau, ou choisir un niveau en particulier.
+
+3. Score : 
+     Le score est en étoiles, plus il y a de coup moins vous aurez d'étoiles !
+
+4. Prenez du plaisir !
+    
+
 # **SYSTEME DE SAUVEGARDE**
 
 1. Fonctionnement : 
