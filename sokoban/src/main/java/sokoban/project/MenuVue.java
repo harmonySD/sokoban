@@ -25,7 +25,7 @@ import java.io.IOException;
 public class MenuVue extends JFrame implements ActionListener{
 	private GameVue fenb1;
 	private CreateVue fenb4;
-	//private SelectVue fenb2;
+	private SelectVue fenb2;
 	//private OptionVue fenb3;
 	private JPanel pan= new FondVue(); // pour avoir l'image de fond 
 	private JButton b1= new JButton("Start");
@@ -50,12 +50,21 @@ public class MenuVue extends JFrame implements ActionListener{
 		b1.addActionListener(this);
 		b4.addActionListener(this);
 
+/*
 		b2.setBounds(100,150,300,100);
 		pan.add(b2);
 		b2.addActionListener(this);
 		b3.setBounds(100,150,300,100);
 		pan.add(b3);
-		b3.addActionListener(this);
+		b3.addActionListener(this);*/
+
+		b2.setBounds(100,350,300,100);
+		pan.add(b2);
+		b2.addActionListener(this);
+		//b3.setBounds(100,450,300,100);
+		//pan.add(b3);
+		//b3.addActionListener(this);
+
 		this.setVisible(true);
 	}
 
@@ -68,10 +77,10 @@ public class MenuVue extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent arg0){
 		this.dispose();
 		if(arg0.getSource()==b1){
-			fenb1= new GameVue(nom);
+			fenb1= new GameVue(nom,"niveautest.txt");
 		}
 		else if(arg0.getSource()== b2){
-			//fenb2= new SelectVue();
+			fenb2= new SelectVue(nom);
 		}
 		else if (arg0.getSource() ==b3){
 			//fenb3= new OptionVue();

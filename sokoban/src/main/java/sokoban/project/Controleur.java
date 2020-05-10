@@ -10,9 +10,9 @@ import java.lang.*;
 public class Controleur /*implements KeyListener */{
 	private GameVue vue;
 	private Game modele;
-	public Controleur(GameVue g, String nom) {
+	public Controleur(GameVue g, String nom,String leveln) {
 		this.vue=g;
-		this.modele=new Game(nom);////
+		this.modele=new Game(nom,leveln);////
 		
 	}
 	public Game getModele() {
