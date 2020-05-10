@@ -384,7 +384,9 @@ public class CreateVue extends JFrame implements MouseListener{
 			newGame.getBoard().set_max2stars((int)Math.round(nbTmp*1.33));
 		newGame.level_saver(this.nameGame.replace(".txt"," ").trim());// on trime et on enlève l'éventuel .txt que l'utilisateur aurait écrit par erreur
 		//car cette fonction à l'appel demande uniquement le nom du fichier à créer sans aucun .txt 
-            }
+            this.dispose();// on revient au menu principal sur sauvegarde réussi
+            fenMenu = new MenuVue(this.nom); 
+			}
             this.update();
             selected = 0;
         }
