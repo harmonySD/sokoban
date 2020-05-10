@@ -97,7 +97,7 @@ public class CreateVue extends JFrame implements MouseListener{
     // Les champs nombre de coup et nom de game
     private JTextField nbCoup;
     private JTextField name;
-
+	private int nbTmp;
     public CreateVue(String nom) {
         this.nom = nom;
         this.selected = 0;
@@ -379,8 +379,11 @@ public class CreateVue extends JFrame implements MouseListener{
                     }
                 }
                 // Créer une game à partir de celle produite par le User 364
-                Game newGame = new Game(new Player(this.nom), this.board.getBoard()); //je pense que "new " player va sauter dans l'implémentation finale 
-
+             Game newGame = new Game(new Player(this.nom), this.board.getBoard()); //je pense que "new " player va sauter dans l'implémentation finale 
+			newGame.getBoard().set_max3stars(nbTmp);
+			newGame.getBoard().set_max2stars((int)Math.round(nbTmp*1.33));
+		newGame.level_saver(this.nameGame.replace(".txt"," ").trim());// on trime et on enlève l'éventuel .txt que l'utilisateur aurait écrit par erreur
+		//car cette fonction à l'appel demande uniquement le nom du fichier à créer sans aucun .txt 
             }
             this.update();
             selected = 0;
@@ -540,6 +543,7 @@ public class CreateVue extends JFrame implements MouseListener{
         } catch(NumberFormatException nfe) {
             nombre = 0;
         }
+		nbTmp = nombre;
         // S'il y a un unique personnage
         // S'il y a autant de boxs d'une couleur que d'objectifs de cette même couleur
         // S'il y a au moins un duo box / objectif
